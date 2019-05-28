@@ -6,7 +6,7 @@ using namespace std;
 
 /**
 * @brief performs inplace selection sort on a given vector
-* complexity O(n^2)
+* complexity O(N^2)...~1/2 N^2
 *
 * @tparam T
 * @param a_vector a_vector sort

@@ -1,3 +1,6 @@
+#ifndef _SORT_UTILS
+#define _SORT_UTILS
+
 #include<vector>
 
 using namespace std;
@@ -32,3 +35,5 @@ void my_swap(vector<T> *a_vector, int p, int q){
   (*a_vector)[p] = (*a_vector)[q];
   (*a_vector)[q] = tmp;
 }
+
+#endif
