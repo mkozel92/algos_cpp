@@ -1,3 +1,6 @@
+#ifndef KNUTH
+#define KNUTH
+
 #include<vector>
 #include"sort_utils.h"
 #include<random>
@@ -23,3 +26,5 @@ void knuth_shuffle(vector<T> *a_vector){
     my_swap(a_vector, i, j);
   }  
 }
+
+#endif
