@@ -1,6 +1,7 @@
 #include<vector>
 #include"sort_utils.h"
 #include<random>
+#include<iostream>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ void knuth_shuffle(vector<T> *a_vector){
   random_device r;
   default_random_engine e1(r());
   
-  for(int i = 1; i<a_vector->size; i++){
+  for(int i = 1; i<a_vector->size(); i++){
     uniform_int_distribution<int> dist(0, i);
     int j = dist(e1);
     my_swap(a_vector, i, j);
