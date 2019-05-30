@@ -27,7 +27,7 @@ class LinkedListStack{
 * @brief push to the top of the stack
 * complexity O(1)
 *
-* @tparam T
+* @tparam T data type the stack stores
 * @param data data to push
 */
 template <class T>
@@ -40,7 +40,7 @@ void LinkedListStack<T>::push(T data){
 /**
 * @brief pop from the top of the stack
 *
-* @tparam T
+* @tparam T data type tha stack stores
 *
 * @return value in the top element of the stack
 */
@@ -57,7 +57,7 @@ T LinkedListStack<T>::pop(){
 /**
 * @brief checks if the stack is empty
 *
-* @tparam T
+* @tparam T data type the stack stores
 *
 * @return returns True if the stack is empty
 */
@@ -69,7 +69,7 @@ bool LinkedListStack<T>::is_empty(){
 /**
 * @brief prints whole stack
 *
-* @tparam T
+* @tparam T data type the stack stores
 */
 template <class T>
 void LinkedListStack<T>::print_stack(){

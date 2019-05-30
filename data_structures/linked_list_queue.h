@@ -28,7 +28,7 @@ class LinkedListQueue{
 * @brief enqueue to the end of the queue
 * complexity O(1)
 *
-* @tparam T
+* @tparam T data type the queue stores
 * @param data data to push
 */
 template <class T>
@@ -49,7 +49,7 @@ void LinkedListQueue<T>::enqueue(T data){
 * @brief dequeue from the beginning of the queue
 * complexity O(1)
 *
-* @tparam T
+* @tparam T data type the queue store
 *
 * @return value from the beginning of the queue
 */
@@ -66,7 +66,7 @@ T LinkedListQueue<T>::dequeue(){
 /**
 * @brief checks if the queue is empty
 *
-* @tparam T
+* @tparam T data type the queue stores
 *
 * @return returns True if the queue is empty
 */
@@ -78,7 +78,7 @@ bool LinkedListQueue<T>::is_empty(){
 /**
 * @brief prints whole queue
 *
-* @tparam T
+* @tparam T data type the queue stores
 */
 template <class T>
 void LinkedListQueue<T>::print_queue(){
