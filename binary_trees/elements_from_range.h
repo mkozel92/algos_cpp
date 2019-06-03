@@ -2,6 +2,8 @@
 #include"../data_structures/linked_list_queue.h"
 #include"binary_tree.h"
 
+
+namespace binary_tree {
 /**
 * @brief enqueues elements from a range inorder from a binary tree
 * complexity (M + log N)
@@ -29,3 +31,4 @@ void get_elements_from_range(Node<K, V>* a_node, LinkedListQueue<K> *q, K low, K
   }
 }
 
+} // binary_tree

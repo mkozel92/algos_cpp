@@ -1,6 +1,5 @@
 #include<iostream>
 
-using namespace std;
 
 /**
 * @brief node implementation for red black tree
@@ -172,7 +171,7 @@ void RedBlackTree<K>::recursive_print(Node<K> *node){
   if(node == nullptr){
     return;  
   }  
-  cout<<node->key<<endl;
+  std::cout<<node->key<<std::endl;
   recursive_print(node->left);
   recursive_print(node->right);
 }

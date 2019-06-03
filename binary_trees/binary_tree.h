@@ -1,9 +1,7 @@
 #include<string>
 #include<iostream>
 
-using namespace std;
-
-
+namespace binary_tree{
 /**
 * @brief A node for a binary tree
 *
@@ -133,6 +131,8 @@ void BinaryTree<K, V>::inorder_print(Node<K,V> *node){
    return;
   }  
   inorder_print(node->left);
-  cout<<node->key<<" "<<node->value<<endl;
+  std::cout<<node->key<<" "<<node->value<<std::endl;
   inorder_print(node->right);
 }
+
+} //binary_tree

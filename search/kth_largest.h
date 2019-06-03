@@ -14,7 +14,7 @@
 * @return value of the kth larges elemnt
 */
 template <class T>
-int quick_find(vector<T> *a_vector, int k){
+int quick_find(std::vector<T> *a_vector, int k){
   
   knuth_shuffle(a_vector);
 

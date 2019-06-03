@@ -1,6 +1,5 @@
 #include<vector>
 
-using namespace std;
 
 /**
 * @brief Object that maintains a list for connected components.
@@ -11,7 +10,7 @@ using namespace std;
 */
 class QuickUnion{
   private:
-    vector<int> id_list;
+    std::vector<int> id_list;
   public:
     /**
     * @brief initialization assignins each object to its own connected component

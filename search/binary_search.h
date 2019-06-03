@@ -11,9 +11,8 @@
 * @return index of the elemnt to search or -1 if this element is not present
 */
 
-using namespace std;
 
-int my_binary_search(const vector<int>& a_vector, int to_search){
+int my_binary_search(const std::vector<int>& a_vector, int to_search){
   int low = 0;
   int hi = a_vector.size() - 1;
   

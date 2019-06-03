@@ -3,7 +3,6 @@
 #include<unordered_set>
 #include<unordered_map>
 
-using namespace std;
 
 /**
  * Function to determine whether a given word is squashable.
@@ -20,7 +19,8 @@ using namespace std;
  * @param mem_dict: memoized solutions
  * @return: whether or not a_word is squashable
 			         */
-bool is_squashable(string a_word, unordered_set<string> dictionary, unordered_map<string, bool> &mem_dict){
+bool is_squashable(std::string a_word, std::unordered_set<std::string> dictionary,\
+                   std::unordered_map<std::string, bool> &mem_dict){
   
   if(mem_dict.find(a_word) != mem_dict.end()){
     return mem_dict[a_word];
@@ -30,7 +30,7 @@ bool is_squashable(string a_word, unordered_set<string> dictionary, unordered_ma
     return false;
   }
   
-  string tmp;
+  std::string tmp;
   for (int i = 0; i < a_word.length(); i++){
     tmp = a_word;
     tmp.erase(i, 1);

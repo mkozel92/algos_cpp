@@ -2,15 +2,14 @@
 #include<vector>
 #include"../../search/binary_search.h"
 
-using namespace std;
 
 TEST(test_binary_search, test_empty_list){
-  vector<int> v;
+  std::vector<int> v;
   EXPECT_EQ(my_binary_search(v, 10), -1);  
 }
 
 TEST(test_binary_search, test_present_elements){
-  vector<int> v(100);
+  std::vector<int> v(100);
   for(int i = 0; i < v.size(); i++){
     v[i] = i;
   }
@@ -21,7 +20,7 @@ TEST(test_binary_search, test_present_elements){
 
 
 TEST(test_binary_search, test_missing_elements){
-  vector<int> v(100);
+  std::vector<int> v(100);
   for(int i = 0; i < v.size(); i++){
     v[i] = i;
   }

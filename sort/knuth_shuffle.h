@@ -6,8 +6,6 @@
 #include<random>
 #include<iostream>
 
-using namespace std;
-
 template <class T>
 /**
 * @brief perform inplace knuth shuffle that produces 
@@ -16,14 +14,14 @@ template <class T>
 *
 * @param a_vector vector to shuffle
 */
-void knuth_shuffle(vector<T> *a_vector){
-  random_device r;
-  default_random_engine e1(r());
+void knuth_shuffle(std::vector<T> *a_vector){
+  std::random_device r;
+  std::default_random_engine e1(r());
   
   for(int i = 1; i<a_vector->size(); i++){
-    uniform_int_distribution<int> dist(0, i);
+    std::uniform_int_distribution<int> dist(0, i);
     int j = dist(e1);
-    my_swap(a_vector, i, j);
+    swap(a_vector, i, j);
   }  
 }
 

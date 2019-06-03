@@ -2,8 +2,6 @@
 #include<iostream>
 #include<string>
 
-using namespace std;
-
 
 /**
 * @brief merges two sorted vectors into one sorted vector
@@ -17,7 +15,7 @@ using namespace std;
 * @param mid saparates vectors to merge
 */
 template <class T>
-void merge(vector<T> *a_vector, vector<T> *aux_vector, int low, int hi, int mid){
+void merge(std::vector<T> *a_vector, std::vector<T> *aux_vector, int low, int hi, int mid){
   
   for(int i = low; i <= hi; i++){
       (*aux_vector)[i] = (*a_vector)[i];
@@ -55,7 +53,7 @@ void merge(vector<T> *a_vector, vector<T> *aux_vector, int low, int hi, int mid)
 * @param hi sort to this index
 */
 template <class T>
-void recursive_sort(vector<T> *a_vector, vector<T> *aux_vector, int low, int hi){
+void recursive_sort(std::vector<T> *a_vector, std::vector<T> *aux_vector, int low, int hi){
   
   if(hi <= low){
     return;
@@ -81,10 +79,10 @@ void recursive_sort(vector<T> *a_vector, vector<T> *aux_vector, int low, int hi)
 * @param hi sort to this index
 */
 template <class T>
-void iterative_sort(vector<T> *a_vector, vector<T> *aux_vector, int low, int hi){
+void iterative_sort(std::vector<T> *a_vector, std::vector<T> *aux_vector, int low, int hi){
   for(int sz = 1; sz < a_vector->size(); sz = sz+sz){
     for(int i = 0; i < a_vector->size(); i += sz+sz){
-      merge(a_vector, aux_vector, i, min(hi, i+2*sz-1), i+sz-1);    
+      merge(a_vector, aux_vector, i, std::min(hi, i+2*sz-1), i+sz-1);    
     }  
   }
 }
@@ -98,8 +96,8 @@ void iterative_sort(vector<T> *a_vector, vector<T> *aux_vector, int low, int hi)
 * @param implementation wheter to use iterative or recursive implementation
 */
 template <class T>
-void merge_sort(vector<T> *a_vector, string implementation="recursive"){
-  vector<T> aux_vector(a_vector->size());  
+void merge_sort(std::vector<T> *a_vector, std::string implementation="recursive"){
+  std::vector<T> aux_vector(a_vector->size());  
   if (implementation == "recursive"){
     recursive_sort(a_vector, &aux_vector, 0, a_vector->size()-1);
   }
@@ -107,7 +105,7 @@ void merge_sort(vector<T> *a_vector, string implementation="recursive"){
     iterative_sort(a_vector, &aux_vector, 0, a_vector->size()-1);
   }
   else{
-    throw runtime_error("unknown implemntation of merge sort");
+    throw std::runtime_error("unknown implemntation of merge sort");
   }
 }
 

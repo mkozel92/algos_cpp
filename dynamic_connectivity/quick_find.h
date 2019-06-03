@@ -1,6 +1,5 @@
 #include<vector>
 
-using namespace std;
 
 /**
 * @brief class that maintains a list for connected componentes.
@@ -9,7 +8,7 @@ using namespace std;
 */
 class QuickFind{
   private:
-    vector<int> id_list;
+    std::vector<int> id_list;
   public:
     /**
     * @brief initialization assigns each object to its own connected component

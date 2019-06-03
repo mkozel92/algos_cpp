@@ -1,6 +1,5 @@
 #include<vector>
 
-using namespace std;
 
 /**
 * @brief Object that maintains a list for connected components.
@@ -13,8 +12,8 @@ using namespace std;
 */
 class WeightedQuickUnion{
   private:
-    vector<int> id_list;
-    vector<int> sizes;
+    std::vector<int> id_list;
+    std::vector<int> sizes;
   public:
     /**
     * @brief initialization that assigns each object so its own connected component

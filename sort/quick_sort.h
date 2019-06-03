@@ -13,7 +13,7 @@ template <class T>
 * @param hi partition to this index
 *
 */
-int partition(vector<T> *a_vector, int low, int hi){
+int partition(std::vector<T> *a_vector, int low, int hi){
   
   int i = low + 1;
   int j = hi;
@@ -33,9 +33,9 @@ int partition(vector<T> *a_vector, int low, int hi){
     if (i >= j){
       break;  
     }
-    my_swap(a_vector, i, j);  
+    swap(a_vector, i, j);  
   }
-  my_swap(a_vector, low, j);
+  swap(a_vector, low, j);
   return j;
 }
 
@@ -50,7 +50,7 @@ int partition(vector<T> *a_vector, int low, int hi){
 * @param hi sort to this index
 */
 template <class T>
-void recursive_sort(vector<T> *a_vector, int low, int hi){
+void recursive_sort(std::vector<T> *a_vector, int low, int hi){
     
     if(hi <= low){
       return;  
@@ -70,7 +70,7 @@ void recursive_sort(vector<T> *a_vector, int low, int hi){
 * @param hi sort to this index
 */
 template <class T>
-void three_way_sort(vector<T> *a_vector, int low, int hi){
+void three_way_sort(std::vector<T> *a_vector, int low, int hi){
   
   if(hi <= low){
     return;  
@@ -82,12 +82,12 @@ void three_way_sort(vector<T> *a_vector, int low, int hi){
 
   while(i <= gt){
     if((*a_vector)[i] < v){
-      my_swap(a_vector, lt, i);
+      swap(a_vector, lt, i);
       i++;
       lt++;
     }  
     else if((*a_vector)[i] > v){
-      my_swap(a_vector, gt, i);
+      swap(a_vector, gt, i);
       gt--;
     }
     else{
@@ -111,7 +111,7 @@ void three_way_sort(vector<T> *a_vector, int low, int hi){
 * @param implementation which inplemntation to use (three_way, basic)
 */
 template <class T>
-void quick_sort(vector<T> *a_vector, string implementation = "basic"){
+void quick_sort(std::vector<T> *a_vector, std::string implementation = "basic"){
   knuth_shuffle(a_vector);
   if(implementation == "basic"){
     recursive_sort(a_vector, 0, a_vector->size() - 1);  
@@ -120,6 +120,6 @@ void quick_sort(vector<T> *a_vector, string implementation = "basic"){
     three_way_sort(a_vector, 0, a_vector->size() - 1);  
   }
   else{
-    throw runtime_error("unknown quick sort implementation");  
+    throw std::runtime_error("unknown quick sort implementation");  
   }
 }
