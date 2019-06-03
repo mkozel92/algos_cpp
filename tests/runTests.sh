@@ -13,6 +13,7 @@ g++ -std=c++11 -isystem \
   ./tests_sort/test_merge_sort.cpp\
   ./tests_sort/test_quick_sort.cpp\
   ./tests_sort/test_heap_sort.cpp\
+  ./tests_binary_tree/test_elements_from_range.cpp\
   ${GTEST_DIR}/libgtest.a \
   -o $test_file
 

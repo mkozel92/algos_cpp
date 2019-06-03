@@ -22,13 +22,15 @@ void get_elements_from_range(Node<K, V>* a_node, LinkedListQueue<K> *q, K low, K
     get_elements_from_range(a_node->left, q, low, hi);  
   }
   else if(a_node->key < low){
-    get_elemtns_from_range(a_node->right, q, low, hi);  
+    get_elements_from_range(a_node->right, q, low, hi);  
   }
   else{
     get_elements_from_range(a_node->left, q, low, hi);  
-    q.enqueue(a_node->key);
-    get_elements_from_range(a_node->left, q, low, hi);   
+    q->enqueue(a_node->key);
+    get_elements_from_range(a_node->right, q, low, hi);   
   }
 }
 
+
 } // binary_tree
+

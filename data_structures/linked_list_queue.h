@@ -1,6 +1,35 @@
 #include<iostream>
 #include"linked_list_node.h"
 
+template <class T>
+class LLIterator{
+  private:
+    Node<T> *node_ptr;
+    LLIterator(Node<T> *node) : node_ptr(node) {};
+  public:
+    template <class>
+    friend class LinkedListQueue;
+    LLIterator() : node_ptr(nullptr) {};
+    bool operator!= (const LLIterator &itr) const {
+      return node_ptr != itr.node_ptr;  
+    }
+
+    T& operator* () const {
+      return node_ptr->data;  
+    }
+    
+    T& operator-> () const {
+      return node_ptr->data;  
+    }
+    
+    LLIterator operator++ (int){
+      LLIterator temp = *this;
+      node_ptr = node_ptr->next;
+      return temp;
+    }
+};
+
+
 /**
 * @brief Queue implemented using a linked list
 */
@@ -9,14 +38,27 @@ class LinkedListQueue{
   private:
     Node<T> *first;
     Node<T> *last;
-  
+    
   public:
     LinkedListQueue(){first = nullptr; last = nullptr;};
     void enqueue(T);
     T dequeue();
     bool is_empty();
     void print_queue();
+    Node<T>* get_first();
+    LLIterator<T> begin();
+    LLIterator<T> end();
 };
+
+template <class T>
+LLIterator<T> LinkedListQueue<T>::begin(){
+  return LLIterator<T>(first);  
+}
+
+template <class T>
+LLIterator<T> LinkedListQueue<T>::end(){
+  return LLIterator<T>(last);  
+}
 
 /**
 * @brief enqueue to the end of the queue

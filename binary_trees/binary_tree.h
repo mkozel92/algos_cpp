@@ -1,3 +1,6 @@
+#ifndef BINARY_TREE
+#define BINARY_TREE
+
 #include<string>
 #include<iostream>
 
@@ -136,3 +139,6 @@ void BinaryTree<K, V>::inorder_print(Node<K,V> *node){
 }
 
 } //binary_tree
+
+#endif
+
