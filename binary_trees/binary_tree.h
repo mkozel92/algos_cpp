@@ -18,10 +18,12 @@ class Node{
     V value;
     Node *left;
     Node *right;
+    Node *next;
     int count;
     Node(K key, V value) : key(key), value(value), count(1) {
         left = nullptr;
         right = nullptr;
+        next = nullptr;
       };
 };
  
