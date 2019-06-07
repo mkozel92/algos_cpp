@@ -1,6 +1,6 @@
 #include<gtest/gtest.h>
-#include"../../graphs/depth_first_search.h"
 #include"../../graphs/adjacency_list_graph.h"
+#include"../../graphs/depth_first_search.h"
 #include<vector>
 
 TEST(dfs, test_dfs){

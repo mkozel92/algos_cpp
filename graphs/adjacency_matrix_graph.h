@@ -1,3 +1,6 @@
+#ifndef AM_GRAPH
+#define AM_GRAPH
+
 #include"graph.h"
 #include<vector>
 #include<cassert>
@@ -48,3 +51,4 @@ void AMGraph::add_edge(int v_1, int v_2){
   graph[v_2][v_1] = 1;  
 }
   
+#endif
