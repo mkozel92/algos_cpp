@@ -1,5 +1,5 @@
 test_file="test_file"
-test_scripts=$(find . -type f -name "*.cpp")
+test_scripts=$(find ../ -type f -name "*.cc")
 
 
 g++ -std=c++11 -isystem \

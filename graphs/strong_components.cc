@@ -62,9 +62,3 @@ bool StrongComponents::is_connected(int p, int q){
   return vertex_group[p] == vertex_group[q];
 }
 
-
-
-int main(){
-  return 0;  
-  
-}

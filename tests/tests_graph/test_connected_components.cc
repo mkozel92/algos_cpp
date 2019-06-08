@@ -1,6 +1,6 @@
 #include<gtest/gtest.h>
-#include"../../graphs/adjacency_list_graph.cpp"
-#include"../../graphs/connected_components.cpp"
+#include"../../graphs/adjacency_list_graph.h"
+#include"../../graphs/connected_components.h"
 
 
 TEST(graph_test, connected_componentss_test){
