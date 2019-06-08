@@ -1,3 +1,6 @@
+#ifndef ALGOS_DATA_STRUCTURES_BST_SYMBOL_TABLE_H_
+#define ALGOS_DATA_STRUCTURES_BST_SYMBOL_TABLE_H_
+
 #include<string>
 #include<iostream>
 
@@ -241,3 +244,5 @@ void BSTSymbolTable<K, V>::inorder_print(Node<K,V> *node){
 }
 
 } //symbol_table namespace
+
+#endif // ALGOS_DATA_STRUCTURES_BST_SYMBOL_TABLE_H_

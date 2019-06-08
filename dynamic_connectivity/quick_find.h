@@ -1,5 +1,8 @@
-#include<vector>
+#ifndef ALGOS_DYNAMIC_CONNECTIVITY_QUICK_FIND_H_
+#define ALGOS_DYNAMIC_CONNECTIVITY_QUICK_FIND_H_
 
+
+#include<vector>
 
 /**
 * @brief class that maintains a list for connected componentes.
@@ -57,3 +60,4 @@ void QuickFind::union_(int p, int q){
   }
 }
 
+#endif // ALGOS_DYNAMIC_CONNECTIVITY_QUICK_FIND_H_

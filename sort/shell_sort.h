@@ -1,3 +1,6 @@
+#ifndef ALGOS_SORT_SHELL_SORT_H_
+#define ALGOS_SORT_SHELL_SORT_H_
+
 #include"sort_utils.h"
 #include"insertion_sort.h"
 #include<vector>
@@ -17,3 +20,5 @@ void shell_sort(std::vector<T> *a_vector, const std::vector<int> &h_vector){
     insertion_sort(a_vector, h);
   }
 }
+
+#endif // ALGOS_SORT_SHELL_SORT_H_

@@ -1,5 +1,7 @@
-#include<vector>
+#ifndef ALGOS_DYNAMIC_CONNECTIVITY_QUICK_UNION_H_
+#define ALGOS_DYNAMIC_CONNECTIVITY_QUICK_UNION_H_
 
+#include<vector>
 
 /**
 * @brief Object that maintains a list for connected components.
@@ -71,3 +73,4 @@ void QuickUnion::union_(int p, int q){
   id_list[root_q] = id_list[root_p];
 }
 
+#endif // ALGOS_DYNAMIC_CONNECTIVITY_QUICK_UNION_H_

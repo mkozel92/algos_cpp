@@ -1,3 +1,7 @@
+#ifndef ALGOS_DATA_STRUCTURES_BINARY_HEAP_H_
+#define ALGOS_DATA_STRUCTURES_BINARY_HEAP_H_
+
+
 #include<vector>
 #include"../sort/sort_utils.h"
 #include<iostream>
@@ -131,3 +135,5 @@ void MaxHeap<T>::print_heap(){
   std::cout<<std::endl;
 }
 
+
+#endif // ALGOS_DATA_STRUCTURES_BINARY_HEAP_H_

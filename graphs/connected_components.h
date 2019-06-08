@@ -1,3 +1,6 @@
+#ifndef ALGOS_GRAPHS_CONNECTED_COMPONENTS_H_
+#define ALGOS_GRAPHS_CONNECTED_COMPONENTS_H_
+
 #include"graph.h"
 #include<vector>
 
@@ -18,4 +21,4 @@ class ConnectedComponents{
     bool is_connected(int, int);
 };
 
-
+#endif // ALGOS_GRAPHS_CONNECTED_COMPONENTS_H_

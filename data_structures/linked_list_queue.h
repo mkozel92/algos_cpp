@@ -1,3 +1,7 @@
+#ifndef ALGOS_DATA_STRUCTURES_LINKED_LIST_QUEUE_H_
+#define ALGOS_DATA_STRUCTURES_LINKED_LIST_QUEUE_H_
+
+
 #include<iostream>
 #include"linked_list_node.h"
 
@@ -125,3 +129,4 @@ void LinkedListQueue<T>::print_queue(){
   }
 }
 
+#endif // ALGOS_DATA_STRUCTURES_LINKED_LIST_QUEUE_H_

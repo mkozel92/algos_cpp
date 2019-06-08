@@ -1,5 +1,5 @@
-#ifndef _SORT_UTILS
-#define _SORT_UTILS
+#ifndef ALGOS_SORT_SORT_UTILS_H_
+#define ALGOS_SORT_SORT_UTILS_H_
 
 #include<vector>
 
@@ -34,4 +34,4 @@ void swap(std::vector<T> *a_vector, int p, int q){
   (*a_vector)[q] = tmp;
 }
 
-#endif
+#endif // ALGOS_SORT_SORT_UTILS_H_

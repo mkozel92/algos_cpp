@@ -1,5 +1,5 @@
-#ifndef AL_GRAPH
-#define AL_GRAPH
+#ifndef ALGOS_GRAPHS_ADJACENCY_LIST_DIGRAPH_H_
+#define ALGOS_GRAPHS_ADJACENCY_LIST_DIGRAPH_H_
 
 #include"graph.h"
 #include<vector>
@@ -17,4 +17,4 @@ class ALDigraph : public Digraph {
     ALDigraph *reverse();
 };
  
-#endif
+#endif // ALGOS_GRAPHS_ADJACENCY_LIST_DIGRAPH_H_

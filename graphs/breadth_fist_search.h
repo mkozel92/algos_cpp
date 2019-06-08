@@ -1,3 +1,7 @@
+#ifndef ALGOS_GRAPHS_BREADTH_FIRST_SEARCH_H_
+#define ALGOS_GRAPHS_BREADTH_FIRST_SEARCH_H_
+
+
 #include"graph.h"
 #include<vector>
 #include<queue>
@@ -32,3 +36,4 @@ void iterative_dfs(const Graph &g, std::vector<bool> *visited,\
 }
 
 
+#endif //  ALGOS_GRAPHS_BREADTH_FIRST_SEARCH_H_

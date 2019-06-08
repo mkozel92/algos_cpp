@@ -1,3 +1,6 @@
+#ifndef ALGOS_SORT_INSERTION_SORT_H_
+#define ALGOS_SORT_INSERTION_SORT_H_
+
 #include"sort_utils.h"
 #include<vector>
 
@@ -21,3 +24,5 @@ void insertion_sort(std::vector<T> *a_vector, int h_distance){
     }
   }  
 }
+
+#endif // ALGOS_SORT_INSERTION_SORT_H_

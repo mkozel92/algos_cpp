@@ -1,5 +1,5 @@
-#ifndef KNUTH
-#define KNUTH
+#ifndef ALGOS_SORT_KNUTH_SHUFFLE_H_
+#define ALGOS_SORT_KNUTH_SHUFFLE_H_
 
 #include<vector>
 #include"sort_utils.h"
@@ -25,4 +25,4 @@ void knuth_shuffle(std::vector<T> *a_vector){
   }  
 }
 
-#endif
+#endif // ALGOS_SORT_KNUTH_SHUFFLE_H_

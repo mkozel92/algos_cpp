@@ -1,3 +1,6 @@
+#ifndef ALGOS_DATA_STRUCTURES_SEPARATE_CHAINED_HASH_TABLE_H_
+#define ALGOS_DATA_STRUCTURES_SEPARATE_CHAINED_HASH_TABLE_H_
+
 #include<vector>
 #include<iostream>
 #include<unordered_map>
@@ -83,3 +86,5 @@ V *SeparateChainedHashTable<K, V>::get(K key){
       return &current->value;
     } 
 }
+
+#endif // ALGOS_DATA_STRUCTURES_SEPARATE_CHAINED_HASH_TABLE_H_

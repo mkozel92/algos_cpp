@@ -1,3 +1,6 @@
+#ifndef ALGOS_RECURSION_PERMUTATION_H_
+#define ALGOS_RECURSION_PERMUTATION_H_
+
 #include<unordered_set>
 #include<string>
 #include<iostream>
@@ -27,3 +30,4 @@ std::unordered_set<std::string> get_permutations(std::string a_string){
   return a_set;
 }
 
+#endif // ALGOS_RECURSION_PERMUTATION_H_

@@ -1,3 +1,6 @@
+#ifndef ALGOS_SORT_QUICK_SORT_H_
+#define ALGOS_SORT_QUICK_SORT_H_
+
 #include<vector>
 #include<string>
 #include<iostream>
@@ -123,3 +126,5 @@ void quick_sort(std::vector<T> *a_vector, std::string implementation = "basic"){
     throw std::runtime_error("unknown quick sort implementation");  
   }
 }
+
+#endif // ALGOS_SORT_QUICK_SORT_H_

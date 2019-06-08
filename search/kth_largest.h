@@ -1,3 +1,6 @@
+#ifndef ALGOS_SEARCH_KTH_LARGEST_H_
+#define ALGOS_SEARCH_KTH_LARGEST_H_
+
 #include<vector>
 #include<utility>
 #include"../sort/knuth_shuffle.h"
@@ -114,4 +117,4 @@ T quick_find_three(std::vector<T> *a_vector, int k){
   return (*a_vector)[low];
 }
 
-
+#endif // ALGOS_SEARCH_KTH_LARGEST_H_

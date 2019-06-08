@@ -1,3 +1,6 @@
+#ifndef ALGOS_GRAPHS_STRONG_COMPONENTS_H_
+#define ALGOS_GRAPHS_STRONG_COMPONENTS_H_
+
 #include"graph.h"
 #include<vector>
 #include<stack>
@@ -18,4 +21,4 @@ class StrongComponents{
     bool is_connected(int, int);
 };
 
-
+#endif // ALGOS_GRAPHS_STRONG_COMPONENTS_H_

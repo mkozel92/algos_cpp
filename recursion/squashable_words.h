@@ -1,3 +1,6 @@
+#ifndef ALGOS_RECURSION_SQUASHABLE_WORDS_H_
+#define ALGOS_RECURSION_SQUASHABLE_WORDS_H_
+
 #include<iostream>
 #include<string>
 #include<unordered_set>
@@ -43,4 +46,4 @@ bool is_squashable(std::string a_word, const std::unordered_set<std::string> &di
   return false;
 }
 
-
+#endif // ALGOS_RECURSION_SQUASHABLE_WORDS_H_

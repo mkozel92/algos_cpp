@@ -1,5 +1,6 @@
-#ifndef AM_GRAPH
-#define AM_GRAPH
+#ifndef ALGOS_GRAPHS_ADJACENCY_MATRIX_GRAPH_H_
+#define ALGOS_GRAPHS_ADJACENCY_MATRIX_GRAPH_H_
+
 
 #include"graph.h"
 #include<vector>
@@ -51,4 +52,5 @@ void AMGraph::add_edge(int v_1, int v_2){
   graph[v_2][v_1] = 1;  
 }
   
-#endif
+#endif // ALGOS_GRAPHS_ADJACENCY_MATRIX_GRAPH_H_
+

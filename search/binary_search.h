@@ -1,3 +1,6 @@
+#ifndef ALGOS_SEARCH_BINARY_SEARCH_H_
+#define ALGOS_SEARCH_BINARY_SEARCH_H_
+
 #include<iostream>
 #include<vector>
 
@@ -61,3 +64,5 @@ int recursive_binary_search(const std::vector<int> &a_vector,\
     return mid;  
   }
 }
+
+#endif // ALGOS_SEARCH_BINARY_SEARCH_H_

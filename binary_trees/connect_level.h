@@ -1,3 +1,7 @@
+#ifndef ALGOS_BINARY_TREES_CONNECT_LEVEL_H_
+#define ALGOS_BINARY_TREES_CONNECT_LEVEL_H_
+
+
 #include"binary_tree.h"
 #include<queue>
 #include<utility>
@@ -32,4 +36,5 @@ void connect_levels(Node<int, int> *a_node){
 
 } // binary tree
 
+#endif // ALGOS_BINARY_TREES_CONNECT_LEVEL_H_
 

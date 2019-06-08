@@ -1,3 +1,6 @@
+#ifndef ALGOS_DYNAMIC_CONNECTIVITY_WEIGHTED_QUICK_UNION_H_
+#define ALGOS_DYNAMIC_CONNECTIVITY_WEIGHTED_QUICK_UNION_H_
+
 #include<vector>
 
 
@@ -84,3 +87,4 @@ void  WeightedQuickUnion::union_(int p, int q){
   
 }
 
+#endif // ALGOS_DYNAMIC_CONNECTIVITY_WEIGHTED_QUICK_UNION_H_

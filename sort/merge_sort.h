@@ -1,3 +1,6 @@
+#ifndef ALGOS_SORT_MERGE_SORT_H_
+#define ALGOS_SORT_MERGE_SORT_H_
+
 #include<vector>
 #include<iostream>
 #include<string>
@@ -109,3 +112,4 @@ void merge_sort(std::vector<T> *a_vector, std::string implementation="recursive"
   }
 }
 
+#endif // ALGOS_SORT_MERGE_SORT_H_

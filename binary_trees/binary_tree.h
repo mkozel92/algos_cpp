@@ -1,5 +1,5 @@
-#ifndef BINARY_TREE
-#define BINARY_TREE
+#ifndef ALGOS_BINARY_TREES_BINARY_TREE_H_
+#define ALGOS_BINARY_TREES_BINARY_TREE_H_
 
 #include<string>
 #include<iostream>
@@ -142,5 +142,5 @@ void BinaryTree<K, V>::inorder_print(Node<K,V> *node){
 
 } //binary_tree
 
-#endif
+#endif // ALGOS_BINARY_TREES_BINARY_TREE_H_
 

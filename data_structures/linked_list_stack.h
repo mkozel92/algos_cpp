@@ -1,3 +1,7 @@
+#ifndef ALGOS_DATA_STRUCTURES_LINKED_LIST_STACK_H_
+#define ALGOS_DATA_STRUCTURES_LINKED_LIST_STACK_H_
+
+
 #include<iostream>
 
 /**
@@ -80,3 +84,4 @@ void LinkedListStack<T>::print_stack(){
   }
 }
 
+#endif // ALGOS_DATA_STRUCTURES_LINKED_LIST_STACK_H_

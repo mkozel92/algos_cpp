@@ -1,3 +1,7 @@
+#ifndef ALGOS_BINARY_TREES_ELEMENTS_FROM_RANGE_H_
+#define ALGOS_BINARY_TREES_ELEMENTS_FROM_RANGE_H_
+
+
 #include<vector>
 #include"../data_structures/linked_list_queue.h"
 #include"binary_tree.h"
@@ -34,3 +38,4 @@ void get_elements_from_range(Node<K, V>* a_node, LinkedListQueue<K> *q, K low, K
 
 } // binary_tree
 
+#endif // ALGOS_BINARY_TREES_ELEMENTS_FROM_RANGE_H_

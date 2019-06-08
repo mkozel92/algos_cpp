@@ -1,5 +1,5 @@
-#ifndef AL_GRAPH
-#define AL_GRAPH
+#ifndef ALGOS_GRAPHS_ADJACENCY_LIST_GRAPH_H_
+#define ALGOS_GRAPHS_ADJACENCY_LIST_GRAPH_H_
 
 #include"graph.h"
 #include<vector>
@@ -16,4 +16,4 @@ class ALGraph : public Graph {
     void add_edge(int, int);
 };
  
-#endif
+#endif //ALGOS_GRAPHS_ADJACENCY_LIST_GRAPH_H_

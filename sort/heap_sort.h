@@ -1,3 +1,6 @@
+#ifndef ALGOS_SORT_HEAP_SORT_H_
+#define ALGOS_SORT_HEAP_SORT_H_
+
 #include<vector>
 #include"sort_utils.h"
 #include<iostream>
@@ -57,4 +60,4 @@ void heap_sort(std::vector<T> *a_vector){
   }
 }
 
-
+#endif // ALGOS_SORT_HEAP_SORT_H_

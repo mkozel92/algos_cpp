@@ -1,3 +1,7 @@
+#ifndef ALGOS_DATA_STRUCTURES_RED_BLACK_TREE_H_
+#define ALGOS_DATA_STRUCTURES_RED_BLACK_TREE_H_
+
+
 #include<iostream>
 
 
@@ -176,3 +180,5 @@ void RedBlackTree<K>::recursive_print(Node<K> *node){
   recursive_print(node->right);
 }
 
+
+#endif // ALGOS_DATA_STRUCTURES_RED_BLACK_TREE_H_

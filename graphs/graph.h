@@ -1,5 +1,5 @@
-#ifndef GRAPH_INTERFACE
-#define GRAPH_INTERFACE
+#ifndef ALGOS_GRAPHS_GRAPH_H_
+#define ALGOS_GRAPHS_GRAPH_H_
 
 #include<unordered_set>
 
@@ -28,4 +28,4 @@ class Digraph{
 };
 
 
-#endif
+#endif // ALGOS_GRAPHS_GRAPH_H_
