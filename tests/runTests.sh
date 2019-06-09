@@ -6,7 +6,8 @@ g++ -std=c++11 -isystem \
   ${GTEST_DIR}/include -pthread \
   $test_scripts\
   ${GTEST_DIR}/libgtest.a \
-  -o $test_file
+  -o $test_file -g
 
 ./$test_file
 rm $test_file
+

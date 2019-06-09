@@ -55,7 +55,9 @@ T LinkedListStack<T>::pop(){
   }
   Node *first_node = first;
   first = first_node->next;
-  return first_node->data;
+  T data_ = first_node->data;
+  delete first_node;
+  return data_;
 }
 
 /**
