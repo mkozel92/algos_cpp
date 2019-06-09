@@ -52,7 +52,19 @@ class LinkedListQueue{
     Node<T>* get_first();
     LLIterator<T> begin();
     LLIterator<T> end();
+    ~LinkedListQueue();
 };
+
+template<class T>
+LinkedListQueue<T>::~LinkedListQueue(){
+  Node<T>* current = first;
+  Node<T>* tmp;
+  while(current != nullptr){
+    tmp = current;
+    current = current->next;
+    delete tmp;
+  }
+}
 
 template <class T>
 LLIterator<T> LinkedListQueue<T>::begin(){

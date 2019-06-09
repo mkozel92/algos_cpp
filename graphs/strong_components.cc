@@ -13,7 +13,8 @@ void StrongComponents::compute(){
       dfs(reversed, i, 0, &a_stack);
     }  
   } 
-  
+  delete reversed;
+
   for(int j = 0; j < visited.size(); j++){
     visited[j] = false;  
   }

@@ -4,6 +4,7 @@
 #include"graph.h"
 #include<vector>
 #include<cassert>
+#include<memory>
 
 /**
 * @brief Graph implemented using adjacency list
@@ -14,7 +15,7 @@ class ALDigraph : public Digraph {
     ALDigraph(int size) : Digraph(size), graph(size) {}
     std::unordered_set<int> adjacent(int) const;
     void add_edge(int, int);
-    ALDigraph *reverse();
+    ALDigraph* reverse();
 };
  
 #endif // ALGOS_GRAPHS_ADJACENCY_LIST_DIGRAPH_H_
