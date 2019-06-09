@@ -18,7 +18,7 @@ namespace binary_tree {
 * @param hi upper bound for the range
 */
 template <class K, class V>
-void get_elements_from_range(Node<K, V>* a_node, LinkedListQueue<K> *q, K low, K hi){
+void get_elements_from_range(node_ptr<K, V> a_node, LinkedListQueue<K> *q, K low, K hi){
   if(a_node == nullptr){
     return;  
   }

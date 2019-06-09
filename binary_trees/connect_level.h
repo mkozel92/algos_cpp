@@ -14,11 +14,11 @@ namespace binary_tree{
 *
 * @param a_node root of the tree to connect
 */
-void connect_levels(Node<int, int> *a_node){
- std::queue<std::pair<Node<int, int>*, int>> q;
+void connect_levels(node_ptr<int, int> a_node){
+ std::queue<std::pair<node_ptr<int, int>, int>> q;
  q.push(std::make_pair(a_node, 0));
  
- std::pair<Node<int, int>*, int> a_pair;
+ std::pair<node_ptr<int, int>, int> a_pair;
  while(!q.empty()){
   a_pair = q.front();
   q.pop();
