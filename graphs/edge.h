@@ -4,19 +4,34 @@
 #include<cassert>
 
 
+/**
+* @brief implementation of undirected edge
+*/
 class Edge{
   private:
-    int v_1;
-    int v_2;
-    float weight;
+    const int v_1;
+    const int v_2;
+    const float weight;
   public:
     Edge(int v_1, int v_2, float weight) : v_1(v_1),\
                                            v_2(v_2),\
                                            weight(weight) {};
+    /**
+    * @brief gets one of the vertices adjacent to this edge
+    *
+    * @return a vertex
+    */
     int either() {
       return v_1;  
     };
     
+    /**
+    * @brief gets other vertex adjacent to this edge
+    *
+    * @param v first vertex 
+    *
+    * @return other adjacent vertex
+    */
     int other(int v){
       assert(v_1 == v || v_2 == v);
       if (v_1 == v){
@@ -24,6 +39,13 @@ class Edge{
       }
       return v_1;
     };
+    
+    /**
+    * @return weight of this edge 
+    */
+    float get_weight(){
+      return weight;  
+    }
 
     bool operator> (const Edge& other){ 
       return weight > other.weight;
