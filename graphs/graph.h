@@ -4,6 +4,7 @@
 #include<memory>
 #include<unordered_set>
 #include"edge.h"
+#include"directed_edge.h"
 
 /**
 * @brief interface for graph implementations
@@ -41,6 +42,20 @@ class WeightedGraph{
     virtual std::unordered_set<std::shared_ptr<Edge>> get_edges() const = 0;
     virtual void add_edge(int, int, float) = 0;
 };
+
+
+/**
+* @brief interface for Weighted Digraph implementations
+*/
+class WeightedDigraph{
+  public:
+    const int graph_size;
+    WeightedDigraph(int size) : graph_size(size) {};
+    virtual std::unordered_set<std::shared_ptr<DirectedEdge>> adjacent(int) const = 0;
+    virtual std::unordered_set<std::shared_ptr<DirectedEdge>> get_edges() const = 0;
+    virtual void add_edge(int, int, float) = 0;
+};
+
 
 
 #endif // ALGOS_GRAPHS_GRAPH_H_

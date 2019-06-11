@@ -1,5 +1,5 @@
-#ifndef ALGOS_GRAPHS_EDGE_H_
-#define ALGOS_GRAPHS_EDGE_H_
+#ifndef ALGOS_GRAPHS_DIRECTED_EDGE_H_
+#define ALGOS_GRAPHS_DIRECTED_EDGE_H_
 
 #include<cassert>
 
@@ -7,24 +7,33 @@
 /**
 * @brief implementation of undirected edge
 */
-class Edge{
+class DirectedEdge{
   private:
-    const int v_1;
-    const int v_2;
+    const int _from;
+    const int _to;
     const float weight;
   public:
-    Edge(int v_1, int v_2, float weight) : v_1(v_1),\
-                                           v_2(v_2),\
+    DirectedEdge(int _from, int _to, float weight) : _from(_from),\
+                                           _to(_to),\
                                            weight(weight) {};
     /**
-    * @brief gets one of the vertices adjacent to this edge
+    * @brief gets the _from vertex adjacent to this edge
     *
     * @return a vertex
     */
-    int either() {
-      return v_1;  
+    int from() {
+      return _from;  
     };
     
+    /**
+    * @brief gets the _to vertex adjacent to this edge
+    *
+    * @return a vertex
+    */
+    int to(){
+      return _to;  
+    }
+
     /**
     * @brief gets other vertex adjacent to this edge
     *
@@ -33,11 +42,11 @@ class Edge{
     * @return other adjacent vertex
     */
     int other(int v){
-      assert(v_1 == v || v_2 == v);
-      if (v_1 == v){
-        return v_2;
+      assert(_from == v || _to == v);
+      if (_to == v){
+        return _from;
       }
-      return v_1;
+      return _to;
     };
     
     /**
@@ -67,4 +76,4 @@ class Edge{
     };
 };
 
-#endif // ALGOS_GRAPHS_EDGE_H_ 
+#endif // ALGOS_GRAPHS_DIRECTED_EDGE_H_ 
