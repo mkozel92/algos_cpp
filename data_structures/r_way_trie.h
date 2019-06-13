@@ -7,6 +7,11 @@
 #include<iostream>
 
 namespace trie{
+/**
+* @brief Node of a r way trie
+*
+* @tparam T data type in the trie
+*/
 template <class T>
 class Node{
   public:
@@ -16,6 +21,11 @@ class Node{
 };
 
 
+/**
+* @brief implementation of a r way trie
+*
+* @tparam T data type to store in the trie
+*/
 template <class T>
 class RWayTrie{
   private:
@@ -31,12 +41,31 @@ class RWayTrie{
     T* Get(std::string key);
 };
 
+/**
+* @brief put new data in the trie
+* complexity O(L) where L is the length of key
+*
+* @tparam T data type 
+* @param key key to insert 
+* @param value value to insert
+*/
 template <class T>
 void RWayTrie<T>::Put(std::string key, T value){
   root_->next_[key[0]] = RecursivePut(root_->next_[key[0]], key, value, 0);  
 }
 
 
+/**
+* @brief recursive helper function to insert new data
+*
+* @tparam T type of data
+* @param a_node root of subtree to insert to
+* @param key key to insert
+* @param value value to insert
+* @param string_index current position in out key
+*
+* @return subtree with new nodes inserted
+*/
 template <class T>
 std::shared_ptr<Node<T>> RWayTrie<T>::RecursivePut(std::shared_ptr<Node<T>> a_node,\
                                                    std::string key,\
@@ -58,6 +87,15 @@ std::shared_ptr<Node<T>> RWayTrie<T>::RecursivePut(std::shared_ptr<Node<T>> a_no
 }
 
 
+/**
+* @brief get data from the trie
+* complexity O(L) for search hit and sub liear for search miss
+*
+* @tparam T type of data
+* @param key key to search for
+*
+* @return value assiciated with given key or nullptr
+*/
 template <class T>
 T* RWayTrie<T>::Get(std::string key){
   std::shared_ptr<Node<T>> crnt = root_;

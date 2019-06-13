@@ -1,22 +1,22 @@
 #include<gtest/gtest.h>
 #include<string>
 #include<memory>
-#include"../../data_structures/r_way_trie.h"
+#include"../../data_structures/ternary_search_trie.h"
 
-TEST(r_way_tries, test_r_way_tries){
+TEST(ternary_search_tries, test_ternary_search_tries){
   std::vector<std::string> a_vector = {"this", "is", "some", "sample", "data"};
-  trie::RWayTrie<int> rwt(256);
+  TernarySearchTrie<int> tst;
   for (int i = 0; i < a_vector.size(); i++){
-      rwt.Put(a_vector[i], i);
+      tst.Put(a_vector[i], i);
   }
   
   int* a_int;;
   for (int i = 0; i < a_vector.size(); i++){
-    a_int = rwt.Get(a_vector[i]);
+    a_int = tst.Get(a_vector[i]);
     EXPECT_EQ(*a_int, i);
   }
   
-  a_int = rwt.Get("not_there");
+  a_int = tst.Get("not_there");
   EXPECT_EQ(nullptr, a_int);
 }
 
