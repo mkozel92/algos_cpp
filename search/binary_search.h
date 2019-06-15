@@ -15,25 +15,22 @@
 *
 * @return index of the elemnt to search or -1 if this element is not present
 */
-int my_binary_search(const std::vector<int>& a_vector, int to_search){
+int my_binary_search(const std::vector<int> &a_vector, int to_search) {
   int low = 0;
   int hi = a_vector.size() - 1;
-  
-  while(low <= hi){
+
+  while (low <= hi) {
     int mid = (hi + low) / 2;
-    if(to_search < a_vector[mid]){
-      hi = mid - 1;  
-    }
-    else if(to_search > a_vector[mid]){
-      low = mid + 1;  
-    }
-    else{
+    if (to_search < a_vector[mid]) {
+      hi = mid - 1;
+    } else if (to_search > a_vector[mid]) {
+      low = mid + 1;
+    } else {
       return mid;
     }
   }
   return -1;
 }
-
 
 
 /**
@@ -47,21 +44,19 @@ int my_binary_search(const std::vector<int>& a_vector, int to_search){
 *
 * @return index of the element or -1
 */
-int recursive_binary_search(const std::vector<int> &a_vector,\
-                            int to_search, int from_, int to_){
-  if(from_ > to_){
+int recursive_binary_search(const std::vector<int> &a_vector, \
+                            int to_search, int from_, int to_) {
+  if (from_ > to_) {
     return -1;
-  }  
+  }
   int mid = from_ + (to_ - from_) / 2;
 
-  if (a_vector[mid] > to_search){
-    return recursive_binary_search(a_vector, to_search, from_, mid - 1);  
-  }
-  else if (a_vector[mid] < to_search){
-    return recursive_binary_search(a_vector, to_search, mid + 1, to_);  
-  }
-  else{
-    return mid;  
+  if (a_vector[mid] > to_search) {
+    return recursive_binary_search(a_vector, to_search, from_, mid - 1);
+  } else if (a_vector[mid] < to_search) {
+    return recursive_binary_search(a_vector, to_search, mid + 1, to_);
+  } else {
+    return mid;
   }
 }
 

@@ -12,7 +12,7 @@
 *
 * @return position of the pattern in the given string or -1
 */
-int BruteForceSearch(const std::string& a_string, const  std::string& pattern);
+int BruteForceSearch(const std::string &a_string, const std::string &pattern);
 
 
 #endif //  ALGOS_SEARCH_SUBSTREING_SEARCH_BRURE_FORCE_SEATCH_H_

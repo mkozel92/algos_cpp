@@ -9,22 +9,21 @@
 * @param pattern pattern to build dfa for
 * @param dfa vector to hold dfs
 */
-void BuildDFA(std::string pattern, std::vector<std::vector<int>>* dfa){
-  const int pattern_length = pattern.length();  
-  
+void BuildDFA(std::string pattern, std::vector<std::vector<int>> *dfa) {
+  const int pattern_length = pattern.length();
+
   (*dfa)[pattern[0]][0] = 1;
   int current_state = 1;
   int delayed_state = 0;
-  while(current_state < pattern_length){
-    for (int i = 0; i < 256; i++){
-      (*dfa)[i][current_state] = (*dfa)[i][delayed_state];  
+  while (current_state < pattern_length) {
+    for (int i = 0; i < 256; i++) {
+      (*dfa)[i][current_state] = (*dfa)[i][delayed_state];
     }
     (*dfa)[pattern[current_state]][current_state] = current_state + 1;
     current_state++;
-    delayed_state = (*dfa)[pattern[current_state]][delayed_state]; 
+    delayed_state = (*dfa)[pattern[current_state]][delayed_state];
   }
 }
-
 
 
 /**
@@ -36,23 +35,23 @@ void BuildDFA(std::string pattern, std::vector<std::vector<int>>* dfa){
 *
 * @return position of pattern in the string
 */
-int KnuthMorrisPratt(const std::string& a_string, const std::string& pattern){
-  
+int KnuthMorrisPratt(const std::string &a_string, const std::string &pattern) {
+
   const int string_length = a_string.length();
   const int pattern_length = pattern.length();
-  
+
   std::vector<std::vector<int>> \
-          dfa(256, std::vector<int>(pattern_length + 1, 0));
+ dfa(256, std::vector<int>(pattern_length + 1, 0));
   BuildDFA(pattern, &dfa);
-  
+
   int i = 0;
   int j = 0;
-  while(i < string_length && j < pattern_length){
-      j = dfa[a_string[i]][j];
-      i++;
+  while (i < string_length && j < pattern_length) {
+    j = dfa[a_string[i]][j];
+    i++;
   }
-  if (j == pattern_length){
-    return i - j; 
+  if (j == pattern_length) {
+    return i - j;
   }
   return -1;
 }

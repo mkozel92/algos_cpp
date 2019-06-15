@@ -10,18 +10,18 @@
 *
 * @return position of the pattern in the given string or -1
 */
-int BruteForceSearch(const std::string& a_string, const  std::string& pattern){
-  int pattern_length = pattern.length();  
+int BruteForceSearch(const std::string &a_string, const std::string &pattern) {
+  int pattern_length = pattern.length();
   int string_length = a_string.length();
 
-  for(int i = 0; i < string_length - pattern_length + 1; i++){
+  for (int i = 0; i < string_length - pattern_length + 1; i++) {
     int current_match = 0;
-    for (int j = 0; j < pattern_length; j++){
-      if(pattern[j] != a_string[j+i])
-         break;
+    for (int j = 0; j < pattern_length; j++) {
+      if (pattern[j] != a_string[j + i])
+        break;
       current_match++;
     }
-    if(current_match == pattern_length)
+    if (current_match == pattern_length)
       return i;
   }
   return -1;
