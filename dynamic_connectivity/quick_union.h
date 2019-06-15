@@ -10,25 +10,28 @@
 * it means that this object is the root of the group.
 * Each group is threfore represented as a tree
 */
-class QuickUnion{
-  private:
-    std::vector<int> id_list;
-  public:
-    /**
-    * @brief initialization assignins each object to its own connected component
-    * complexity O(N)
-    *
-    * @param N number of objects
-    */
-    QuickUnion(int N) : id_list(N) {
-      for(int i = 0; i < id_list.size(); i++){
-        id_list[i] = i;  
-      }  
-    };
-    int root(int);
-    bool connected(int, int);
-    void union_(int, int);
-}; 
+class QuickUnion {
+private:
+  std::vector<int> id_list;
+public:
+  /**
+  * @brief initialization assignins each object to its own connected component
+  * complexity O(N)
+  *
+  * @param N number of objects
+  */
+  explicit QuickUnion(int N) : id_list(N) {
+    for (int i = 0; i < id_list.size(); i++) {
+      id_list[i] = i;
+    }
+  };
+
+  int root(int);
+
+  bool connected(int, int);
+
+  void union_(int, int);
+};
 
 /**
 * @brief finds the root for given object 
@@ -39,8 +42,8 @@ class QuickUnion{
 *
 * @return 
 */
-int QuickUnion::root(int p){
-  while(p != id_list[p]){
+int QuickUnion::root(int p) {
+  while (p != id_list[p]) {
     p = id_list[p];
   }
   return p;
@@ -55,9 +58,9 @@ int QuickUnion::root(int p){
 *
 * @return True if the object are in the same connected component
 */
-bool QuickUnion::connected(int p, int q){
-  return root(p) == root(q);  
-  
+bool QuickUnion::connected(int p, int q) {
+  return root(p) == root(q);
+
 }
 
 /**
@@ -67,7 +70,7 @@ bool QuickUnion::connected(int p, int q){
 * @param p id of the first object
 * @param q id of the second object
 */
-void QuickUnion::union_(int p, int q){
+void QuickUnion::union_(int p, int q) {
   int root_p = root(p);
   int root_q = root(q);
   id_list[root_q] = id_list[root_p];
