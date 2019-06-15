@@ -13,9 +13,9 @@
 *
 * @return True if the first element is strictly smaller
 */
-template <class T>
-bool less(T p, T q){
-  return p < q;  
+template<class T>
+bool less(T p, T q) {
+  return p < q;
 }
 
 
@@ -27,8 +27,8 @@ bool less(T p, T q){
 * @param p first index
 * @param q second index
 */
-template <class T>
-void swap(std::vector<T> *a_vector, int p, int q){
+template<class T>
+void swap(std::vector<T> *a_vector, int p, int q) {
   T tmp = (*a_vector)[p];
   (*a_vector)[p] = (*a_vector)[q];
   (*a_vector)[q] = tmp;

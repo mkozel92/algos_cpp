@@ -7,7 +7,7 @@
 #include"sort_utils.h"
 #include"knuth_shuffle.h"
 
-template <class T>
+template<class T>
 /**
 * @brief partitioning for quick sort
 *
@@ -16,32 +16,31 @@ template <class T>
 * @param hi partition to this index
 *
 */
-int partition(std::vector<T> *a_vector, int low, int hi){
-  
+int partition(std::vector<T> *a_vector, int low, int hi) {
+
   int i = low + 1;
   int j = hi;
 
-  while (j >= i){
-    
-    while((*a_vector)[low] > (*a_vector)[i]){
+  while (j >= i) {
+
+    while ((*a_vector)[low] > (*a_vector)[i]) {
       i++;
-      if(i > hi){
-        break;  
+      if (i > hi) {
+        break;
       }
     }
 
-    while((*a_vector)[low] < (*a_vector)[j]){
-      j--;  
+    while ((*a_vector)[low] < (*a_vector)[j]) {
+      j--;
     }
-    if (i >= j){
-      break;  
+    if (i >= j) {
+      break;
     }
-    swap(a_vector, i, j);  
+    swap(a_vector, i, j);
   }
   swap(a_vector, low, j);
   return j;
 }
-
 
 
 /**
@@ -52,15 +51,15 @@ int partition(std::vector<T> *a_vector, int low, int hi){
 * @param low sort from this index
 * @param hi sort to this index
 */
-template <class T>
-void recursive_sort(std::vector<T> *a_vector, int low, int hi){
-    
-    if(hi <= low){
-      return;  
-    }
-    int part = partition(a_vector, low, hi);
-    recursive_sort(a_vector, low, part - 1);
-    recursive_sort(a_vector, part + 1, hi);
+template<class T>
+void recursive_sort(std::vector<T> *a_vector, int low, int hi) {
+
+  if (hi <= low) {
+    return;
+  }
+  int part = partition(a_vector, low, hi);
+  recursive_sort(a_vector, low, part - 1);
+  recursive_sort(a_vector, part + 1, hi);
 }
 
 
@@ -72,31 +71,29 @@ void recursive_sort(std::vector<T> *a_vector, int low, int hi){
 * @param low sort from this index
 * @param hi sort to this index
 */
-template <class T>
-void three_way_sort(std::vector<T> *a_vector, int low, int hi){
-  
-  if(hi <= low){
-    return;  
+template<class T>
+void three_way_sort(std::vector<T> *a_vector, int low, int hi) {
+
+  if (hi <= low) {
+    return;
   }
   int lt = low;
   int gt = hi;
   T v = (*a_vector)[low];
   int i = low;
 
-  while(i <= gt){
-    if((*a_vector)[i] < v){
+  while (i <= gt) {
+    if ((*a_vector)[i] < v) {
       swap(a_vector, lt, i);
       i++;
       lt++;
-    }  
-    else if((*a_vector)[i] > v){
+    } else if ((*a_vector)[i] > v) {
       swap(a_vector, gt, i);
       gt--;
+    } else {
+      i++;
     }
-    else{
-      i++;  
-    }
-    
+
   }
   three_way_sort(a_vector, low, lt - 1);
   three_way_sort(a_vector, gt + 1, hi);
@@ -113,17 +110,15 @@ void three_way_sort(std::vector<T> *a_vector, int low, int hi){
 * @param a_vector vector to sort 
 * @param implementation which inplemntation to use (three_way, basic)
 */
-template <class T>
-void quick_sort(std::vector<T> *a_vector, std::string implementation = "basic"){
+template<class T>
+void quick_sort(std::vector<T> *a_vector, const std::string &implementation = "basic") {
   knuth_shuffle(a_vector);
-  if(implementation == "basic"){
-    recursive_sort(a_vector, 0, a_vector->size() - 1);  
-  }
-  else if(implementation == "three_way"){
-    three_way_sort(a_vector, 0, a_vector->size() - 1);  
-  }
-  else{
-    throw std::runtime_error("unknown quick sort implementation");  
+  if (implementation == "basic") {
+    recursive_sort(a_vector, 0, a_vector->size() - 1);
+  } else if (implementation == "three_way") {
+    three_way_sort(a_vector, 0, a_vector->size() - 1);
+  } else {
+    throw std::runtime_error("unknown quick sort implementation");
   }
 }
 

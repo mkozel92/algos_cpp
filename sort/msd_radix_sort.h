@@ -5,11 +5,11 @@
 #include<string>
 #include<iostream>
 
-int GetCharAt(const std::string& a_string, int index);
- 
+int GetCharAt(const std::string &a_string, int index);
 
-void RecursiveRadix(std::vector<std::string> *a_vector,\
-                    int radix, int string_index, int sort_from, int sort_to,\
+
+void RecursiveRadix(std::vector<std::string> *a_vector, \
+                    int radix, int string_index, int sort_from, int sort_to, \
                     std::vector<std::string> *aux_vector);
 
 void MSDRadixSort(std::vector<std::string> *a_vector, int radix);
