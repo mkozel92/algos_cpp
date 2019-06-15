@@ -4,14 +4,14 @@
 * @brief computes connected components 
 * complexity O(N)
 */
-void ConnectedComponents::compute(){
+void ConnectedComponents::compute() {
   int current_group = 0;
-  for (int i = 0; i < visited.size(); i++){
-    if(!visited[i]){
+  for (int i = 0; i < visited.size(); i++) {
+    if (!visited[i]) {
       dfs(i, current_group);
       current_group += 1;
-    }  
-  }  
+    }
+  }
 }
 
 /**
@@ -20,14 +20,14 @@ void ConnectedComponents::compute(){
 * @param p initial unassigned vertex
 * @param group current vertex group
 */
-void ConnectedComponents::dfs(int p, int group){
-  if(visited[p]){
-    return;  
-  }  
+void ConnectedComponents::dfs(int p, int group) {
+  if (visited[p]) {
+    return;
+  }
   visited[p] = true;
   vertex_group[p] = group;
-  for(auto v: g->adjacent(p)){
-    dfs(v, group);  
+  for (auto v: g->adjacent(p)) {
+    dfs(v, group);
   }
 
 }
@@ -40,7 +40,7 @@ void ConnectedComponents::dfs(int p, int group){
 *
 * @return true of there is a pathe between given vertices
 */
-bool ConnectedComponents::is_connected(int p, int q){
+bool ConnectedComponents::is_connected(int p, int q) {
   return vertex_group[p] == vertex_group[q];
 }
 

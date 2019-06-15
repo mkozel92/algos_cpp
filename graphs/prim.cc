@@ -15,14 +15,14 @@
 * @param visited vector of visited vertices
 * @param bh min heap that keeps sorted edges
 */
-void visit(int v, const WeightedGraph& a_graph,\
-           std::vector<bool>* visited, BinaryHeap<edge_ptr> *bh){
+void visit(int v, const WeightedGraph &a_graph, \
+           std::vector<bool> *visited, BinaryHeap<edge_ptr> *bh) {
   (*visited)[v] = true;
-  for(auto e: a_graph.adjacent(v)){
+  for (const auto &e: a_graph.adjacent(v)) {
     int v_1 = e->either();
     int v_2 = e->other(v_1);
-    if(!(*visited)[v_1] || !(*visited)[v_2]){
-      bh->insert(e);  
+    if (!(*visited)[v_1] || !(*visited)[v_2]) {
+      bh->insert(e);
     }
   }
 }
@@ -39,21 +39,21 @@ void visit(int v, const WeightedGraph& a_graph,\
 *
 * @return set of edges that are in MST
 */
-std::unordered_set<edge_ptr> prim(const WeightedGraph& a_graph){
+std::unordered_set<edge_ptr> prim(const WeightedGraph &a_graph) {
   std::vector<bool> visited(a_graph.graph_size, false);
-  BinaryHeap<edge_ptr> bh([](edge_ptr e_1,\
+  BinaryHeap<edge_ptr> bh([](edge_ptr e_1, \
                              edge_ptr e_2)\
-                                ->bool{return *e_1 < *e_2;});
+ -> bool { return *e_1 < *e_2; });
   std::unordered_set<edge_ptr> mst;
 
   visit(0, a_graph, &visited, &bh);
-  
-  while(!bh.is_empty()){
+
+  while (!bh.is_empty()) {
     edge_ptr e = bh.remove();
     int v_1 = e->either();
     int v_2 = e->other(v_1);
-    if(!visited[v_1] || !visited[v_2]){
-      if(!visited[v_1])
+    if (!visited[v_1] || !visited[v_2]) {
+      if (!visited[v_1])
         visit(v_1, a_graph, &visited, &bh);
       else
         visit(v_2, a_graph, &visited, &bh);

@@ -9,11 +9,14 @@
 * @brief Graph implemented using adjacency list
 */
 class ALGraph : public Graph {
-  public:
-    std::vector<std::unordered_set<int>> graph;
-    ALGraph(int size) : Graph(size), graph(size) {}
-    std::unordered_set<int> adjacent(int) const;
-    void add_edge(int, int);
+public:
+  std::vector<std::unordered_set<int>> graph;
+
+  explicit ALGraph(int size) : Graph(size), graph(size) {}
+
+  std::unordered_set<int> adjacent(int) const override;
+
+  void add_edge(int, int) override;
 };
- 
+
 #endif //ALGOS_GRAPHS_ADJACENCY_LIST_GRAPH_H_

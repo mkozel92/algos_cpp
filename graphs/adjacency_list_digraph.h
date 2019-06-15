@@ -10,12 +10,16 @@
 * @brief Graph implemented using adjacency list
 */
 class ALDigraph : public Digraph {
-  public:
-    std::vector<std::unordered_set<int>> graph;
-    ALDigraph(int size) : Digraph(size), graph(size) {}
-    std::unordered_set<int> adjacent(int) const;
-    void add_edge(int, int);
-    ALDigraph* reverse();
+public:
+  std::vector<std::unordered_set<int>> graph;
+
+  explicit ALDigraph(int size) : Digraph(size), graph(size) {}
+
+  std::unordered_set<int> adjacent(int) const override;
+
+  void add_edge(int, int) override;
+
+  ALDigraph *reverse() override;
 };
- 
+
 #endif // ALGOS_GRAPHS_ADJACENCY_LIST_DIGRAPH_H_

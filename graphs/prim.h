@@ -15,8 +15,8 @@ typedef std::shared_ptr<Edge> edge_ptr;
 * @param std::vector visited vertices
 * @param BinaryHeap heap to keep edges ordered by weight
 */
-void visit(int, const WeightedGraph&,\
-           std::vector<bool>*, BinaryHeap<edge_ptr>*);
+void visit(int, const WeightedGraph &, \
+           std::vector<bool> *, BinaryHeap<edge_ptr> *);
 
 /**
 * @brief prim algo to comupute mst
@@ -25,5 +25,5 @@ void visit(int, const WeightedGraph&,\
 *
 * @return set of edges that are in mst
 */
-std::unordered_set<edge_ptr> prim(const WeightedGraph&);
+std::unordered_set<edge_ptr> prim(const WeightedGraph &);
 

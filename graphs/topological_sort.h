@@ -6,11 +6,11 @@
 #include<stack>
 
 
-void recursive_topological_sort(const Digraph&, int,\
-                                std::stack<int>*,\
-                                std::vector<bool>*);
+void recursive_topological_sort(const Digraph &, int, \
+                                std::stack<int> *, \
+                                std::vector<bool> *);
 
-void topological_sort(const Digraph&, std::stack<int>*);
+void topological_sort(const Digraph &, std::stack<int> *);
 
 
 #endif // ALGOS_GRAPHS_TOPOLOGICAL_SORT_H_

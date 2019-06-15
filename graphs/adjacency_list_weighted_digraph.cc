@@ -10,9 +10,9 @@
 * @return unordered_set of adjacent vertices
 */
 std::unordered_set<std::shared_ptr<DirectedEdge>>\
-                    ALWDigraph::adjacent(int v) const {
+ ALWDigraph::adjacent(int v) const {
   assert(v < graph_size);
-  return graph[v];  
+  return graph[v];
 }
 
 /**
@@ -23,20 +23,20 @@ std::unordered_set<std::shared_ptr<DirectedEdge>>\
 * @param v_2 second vertex to connect
 * @param weight weight of the edge
 */
-void ALWDigraph::add_edge(int v_1, int v_2, float weight){
+void ALWDigraph::add_edge(int v_1, int v_2, float weight) {
 
   assert(v_1 < graph_size);
   assert(v_2 < graph_size);
-  
+
   std::shared_ptr<DirectedEdge> new_edge\
-      = std::make_shared<DirectedEdge>(v_1, v_2, weight);
-  graph[v_1].insert(new_edge);  
+ = std::make_shared<DirectedEdge>(v_1, v_2, weight);
+  graph[v_1].insert(new_edge);
   edges.insert(new_edge);
 }
 
 std::unordered_set<std::shared_ptr<DirectedEdge>>\
-          ALWDigraph::get_edges() const {
-  return edges;  
+ ALWDigraph::get_edges() const {
+  return edges;
 }
 
 

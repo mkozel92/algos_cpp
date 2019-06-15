@@ -13,8 +13,8 @@
 * @param distance shortest distances to vertices
 * @param bh min heap with next closest vertices
 */
-void relax(const WeightedDigraph& a_graph, int v, std::vector<bool> *visited,\
-              std::vector<int> *edge_to, std::vector<float> *distance,\
+void relax(const WeightedDigraph &a_graph, int v, std::vector<bool> *visited, \
+              std::vector<int> *edge_to, std::vector<float> *distance, \
               BinaryHeap<std::pair<float, int>> *bh);
 
 /**
@@ -28,6 +28,6 @@ void relax(const WeightedDigraph& a_graph, int v, std::vector<bool> *visited,\
 * @param edge_to
 * @param distance
 */
-void dijkstra(const WeightedDigraph& a_graph, std::vector<bool> *visited,\
+void dijkstra(const WeightedDigraph &a_graph, std::vector<bool> *visited, \
               std::vector<int> *edge_to, std::vector<float> *distance); 
   

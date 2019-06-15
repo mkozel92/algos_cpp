@@ -10,7 +10,7 @@
 */
 std::unordered_set<int> ALDigraph::adjacent(int v) const {
   assert(v < graph_size && v >= 0);
-  return graph[v];  
+  return graph[v];
 }
 
 /**
@@ -20,12 +20,12 @@ std::unordered_set<int> ALDigraph::adjacent(int v) const {
 * @param v_1 first vertex to connect
 * @param v_2 second vertex to connect
 */
-void ALDigraph::add_edge(int v_1, int v_2){
+void ALDigraph::add_edge(int v_1, int v_2) {
 
   assert(v_1 < graph_size && v_1 >= 0);
   assert(v_2 < graph_size && v_2 >= 0);
 
-  graph[v_1].insert(v_2);  
+  graph[v_1].insert(v_2);
 }
 
 /**
@@ -33,12 +33,12 @@ void ALDigraph::add_edge(int v_1, int v_2){
 *
 * @return new graph with reversed edges
 */
-ALDigraph* ALDigraph::reverse(){
-  ALDigraph* reversed_graph = new ALDigraph(graph_size);
-  for(int i = 0; i < graph_size; i++){
-    for(int j : this->adjacent(i)){
+ALDigraph *ALDigraph::reverse() {
+  auto reversed_graph = new ALDigraph(graph_size);
+  for (int i = 0; i < graph_size; i++) {
+    for (int j : this->adjacent(i)) {
       reversed_graph->add_edge(j, i);
-    }  
+    }
   }
   return reversed_graph;
 }
