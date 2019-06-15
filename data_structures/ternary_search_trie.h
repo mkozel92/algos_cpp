@@ -11,15 +11,16 @@
 *
 * @tparam T data type 
 */
-template <class T>
-class Node{
-  public:
-    std::shared_ptr<Node> left_;
-    std::shared_ptr<Node> middle_;
-    std::shared_ptr<Node> right_;
-    char key_char_;
-    T value_;
-    Node() : left_(nullptr), right_(nullptr), middle_(nullptr) {};
+template<class T>
+class Node {
+public:
+  std::shared_ptr<Node> left_;
+  std::shared_ptr<Node> middle_;
+  std::shared_ptr<Node> right_;
+  char key_char_;
+  T value_;
+
+  Node() : left_(nullptr), right_(nullptr), middle_(nullptr), key_char_('\0') {};
 };
 
 
@@ -28,20 +29,23 @@ class Node{
 *
 * @tparam T data type
 */
-template <class T>
-class TernarySearchTrie{
-  private:
-    std::shared_ptr<Node<T>> root_;
-    std::shared_ptr<Node<T>> RecursivePut(std::shared_ptr<Node<T>>,\
-                                          std::string key,\
-                                          T value,
-                                          int key_index);
-  public:
-    TernarySearchTrie() : root_(nullptr) {};
-    void Put(std::string key, T value);
-    T* Get(std::string key);
-};
+template<class T>
+class TernarySearchTrie {
+private:
+  std::shared_ptr<Node<T>> root_;
 
+  std::shared_ptr<Node<T>> RecursivePut(std::shared_ptr<Node<T>>, \
+                                          std::string key, \
+                                          T value,
+                                        int key_index);
+
+public:
+  TernarySearchTrie() : root_(nullptr) {};
+
+  void Put(const std::string &key, T value);
+
+  T *Get(std::string key) const;
+};
 
 
 /**
@@ -55,27 +59,24 @@ class TernarySearchTrie{
 *
 * @return a subtree with inserted nodes
 */
-template <class T>
+template<class T>
 std::shared_ptr<Node<T>> TernarySearchTrie<T>::RecursivePut(\
-                                          std::shared_ptr<Node<T>> a_node,\
-                                          std::string key,\
-                                          T value,\
-                                          int key_index){
-  if (a_node == nullptr){
+                                          std::shared_ptr<Node<T>> a_node, \
+                                          std::string key, \
+                                          T value, \
+                                          int key_index) {
+  if (a_node == nullptr) {
     a_node = std::make_shared<Node<T>>();
     a_node->key_char_ = key[key_index];
-  }  
-  if (a_node->key_char_ > key[key_index]){
-    a_node->left_ = RecursivePut(a_node->left_, key, value, key_index);  
   }
-  else if (a_node->key_char_ < key[key_index]){
-    a_node->right_ = RecursivePut(a_node->right_, key, value, key_index);  
-  }
-  else if (key.length() > key_index + 1){
-    a_node->middle_ = RecursivePut(a_node->middle_, key, value, key_index + 1);   
-  }
-  else{
-    a_node->value_ = value;  
+  if (a_node->key_char_ > key[key_index]) {
+    a_node->left_ = RecursivePut(a_node->left_, key, value, key_index);
+  } else if (a_node->key_char_ < key[key_index]) {
+    a_node->right_ = RecursivePut(a_node->right_, key, value, key_index);
+  } else if (key.length() > key_index + 1) {
+    a_node->middle_ = RecursivePut(a_node->middle_, key, value, key_index + 1);
+  } else {
+    a_node->value_ = value;
   }
   return a_node;
 }
@@ -88,8 +89,8 @@ std::shared_ptr<Node<T>> TernarySearchTrie<T>::RecursivePut(\
 * @param key key to insert 
 * @param value value to insert
 */
-template <class T>
-void TernarySearchTrie<T>::Put(std::string key, T value){
+template<class T>
+void TernarySearchTrie<T>::Put(const std::string &key, T value) {
   root_ = RecursivePut(root_, key, value, 0);
 }
 
@@ -101,23 +102,20 @@ void TernarySearchTrie<T>::Put(std::string key, T value){
 *
 * @return data assiciated with given key or a nullptr
 */
-template <class T>
-T* TernarySearchTrie<T>::Get(std::string key){
+template<class T>
+T *TernarySearchTrie<T>::Get(std::string key) const {
   std::shared_ptr<Node<T>> current = root_;
   int key_index = 0;
-  while(current != nullptr){
-    if (current->key_char_ > key[key_index]){
-       current = current->left_;
-    }
-    else if (current->key_char_ < key[key_index]){
+  while (current != nullptr) {
+    if (current->key_char_ > key[key_index]) {
+      current = current->left_;
+    } else if (current->key_char_ < key[key_index]) {
       current = current->right_;
-    }
-    else if(key_index + 1 < key.length()){
+    } else if (key_index + 1 < key.length()) {
       current = current->middle_;
       key_index += 1;
-    }
-    else{
-      return &(current->value_);  
+    } else {
+      return &(current->value_);
     }
   }
   return nullptr;

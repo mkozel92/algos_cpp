@@ -12,27 +12,36 @@
 *
 * @tparam T data type that the heap stores
 */
-template <class T>
-class BinaryHeap{
-  private:
-    bool (*compare)(T, T);
-    int current_size;
-    std::vector<T> data;
-    void sink(int);
-    void swim(int);
-  public:
-    BinaryHeap(bool (*compare)(T, T),\
-               int capacity = 100) : data(capacity),\
-                                     current_size(0),\
+template<class T>
+class BinaryHeap {
+private:
+  bool (*compare)(T, T);
+
+  int current_size;
+  std::vector<T> data;
+
+  void sink(int);
+
+  void swim(int);
+
+public:
+  explicit BinaryHeap(bool (*compare)(T, T), \
+               int capacity = 100) : data(capacity), \
+                                     current_size(0), \
                                      compare(compare) {};
-    BinaryHeap(int capacity = 100) : data(capacity),\
-                                     current_size(0),\
-                                     compare([](T a, T b)->bool{return a > b;})\
-                                     {};
-    void insert(T);
-    bool is_empty();
-    void print_heap();
-    T remove();
+
+  explicit BinaryHeap(int capacity = 100) : data(capacity), \
+                                     current_size(0), \
+                                     compare([](T a, T b) -> bool { return a > b; })\
+ {};
+
+  void insert(T);
+
+  bool is_empty();
+
+  void print_heap();
+
+  T remove();
 };
 
 
@@ -42,28 +51,26 @@ class BinaryHeap{
 * @tparam T data type the heap stores
 * @param k index of element to sink
 */
-template <class T>
-void BinaryHeap<T>::sink(int k){
-  
-  while(2*k <= current_size){
+template<class T>
+void BinaryHeap<T>::sink(int k) {
+
+  while (2 * k <= current_size) {
     int _child;
-    int left_child = 2*k;
-    int right_child = std::min(2*k + 1, current_size);
-    if(compare(data[left_child],  data[right_child])){
-      _child = left_child;  
+    int left_child = 2 * k;
+    int right_child = std::min(2 * k + 1, current_size);
+    if (compare(data[left_child], data[right_child])) {
+      _child = left_child;
+    } else {
+      _child = right_child;
     }
-    else{
-      _child = right_child;  
-    }
-    
-    if(compare(data[_child], data[k])){
+
+    if (compare(data[_child], data[k])) {
       swap(&data, _child, k);
       k = _child;
+    } else {
+      break;
     }
-    else{
-      break;  
-    }
-  }  
+  }
 }
 
 
@@ -73,18 +80,17 @@ void BinaryHeap<T>::sink(int k){
 * @tparam T data type that the heap stores
 * @param k index of the element to swim
 */
-template <class T>
-void BinaryHeap<T>::swim(int k){
-  
-  while(k > 1){
-    if(compare(data[k], data[k/2])){
-      swap(&data, k, k/2);
+template<class T>
+void BinaryHeap<T>::swim(int k) {
+
+  while (k > 1) {
+    if (compare(data[k], data[k / 2])) {
+      swap(&data, k, k / 2);
       k /= 2;
+    } else {
+      break;
     }
-    else{
-      break;  
-    }
-  }  
+  }
 }
 
 /**
@@ -94,8 +100,8 @@ void BinaryHeap<T>::swim(int k){
 * @tparam T data type the heap stores
 * @param d data to insert into the heap
 */
-template <class T>
-void BinaryHeap<T>::insert(T d){
+template<class T>
+void BinaryHeap<T>::insert(T d) {
   current_size += 1;
   data[current_size] = d;
   swim(current_size);
@@ -109,9 +115,9 @@ void BinaryHeap<T>::insert(T d){
 *
 * @return biggest element of the heap
 */
-template <class T>
-T BinaryHeap<T>::remove(){
-  T tmp = data[1];  
+template<class T>
+T BinaryHeap<T>::remove() {
+  T tmp = data[1];
   swap(&data, 1, current_size);
   current_size -= 1;
   sink(1);
@@ -125,9 +131,9 @@ T BinaryHeap<T>::remove(){
 *
 * @return true if the heap is empty
 */
-template <class T>
-bool BinaryHeap<T>::is_empty(){
-  return current_size == 0;  
+template<class T>
+bool BinaryHeap<T>::is_empty() {
+  return current_size == 0;
 }
 
 /**
@@ -135,12 +141,12 @@ bool BinaryHeap<T>::is_empty(){
 *
 * @tparam T data type the heap stores
 */
-template <class T>
-void BinaryHeap<T>::print_heap(){
-  for (int i = 1; i<= current_size; i++){
-    std::cout<<data[i]<<" ";
-  }  
-  std::cout<<std::endl;
+template<class T>
+void BinaryHeap<T>::print_heap() {
+  for (int i = 1; i <= current_size; i++) {
+    std::cout << data[i] << " ";
+  }
+  std::cout << std::endl;
 }
 
 

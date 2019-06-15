@@ -14,8 +14,8 @@ namespace binary_tree {
 *
 * @param a_node root of the tree to connect
 */
-void ConnectLevels(node_ptr<int, int> a_node) {
-  std::queue <std::pair<node_ptr<int, int>, int>> q;
+void ConnectLevels(const node_ptr<int, int> &a_node) {
+  std::queue<std::pair<node_ptr<int, int>, int>> q;
   q.push(std::make_pair(a_node, 0));
 
   std::pair<node_ptr<int, int>, int> a_pair;

@@ -17,21 +17,19 @@ namespace binary_tree {
 * @param low lower bound for the range
 * @param hi upper bound for the range
 */
-template <class K, class V>
-void get_elements_from_range(node_ptr<K, V> a_node, LinkedListQueue<K> *q, K low, K hi){
-  if(a_node == nullptr){
-    return;  
+template<class K, class V>
+void get_elements_from_range(node_ptr<K, V> a_node, LinkedListQueue<K> *q, K low, K hi) {
+  if (a_node == nullptr) {
+    return;
   }
-  if(a_node->key > hi){
-    get_elements_from_range(a_node->left, q, low, hi);  
-  }
-  else if(a_node->key < low){
-    get_elements_from_range(a_node->right, q, low, hi);  
-  }
-  else{
-    get_elements_from_range(a_node->left, q, low, hi);  
+  if (a_node->key > hi) {
+    get_elements_from_range(a_node->left, q, low, hi);
+  } else if (a_node->key < low) {
+    get_elements_from_range(a_node->right, q, low, hi);
+  } else {
+    get_elements_from_range(a_node->left, q, low, hi);
     q->enqueue(a_node->key);
-    get_elements_from_range(a_node->right, q, low, hi);   
+    get_elements_from_range(a_node->right, q, low, hi);
   }
 }
 

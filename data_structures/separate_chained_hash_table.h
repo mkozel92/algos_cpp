@@ -11,25 +11,29 @@
 * @tparam K type of keys in the table
 * @tparam V type of values in the table
 */
-template <class K, class V>
-class SeparateChainedHashTable{
-  
-  private:
-    class Node{
-      public:
-        K key;
-        V value;
-        Node* next;
-        Node(K key, V value): key(key), value(value), next(nullptr) {};
-      };  
-      
-      std::vector<Node*> data;
-      int size;   
-    public:
-      std::hash<K> hasher;
-      SeparateChainedHashTable(int size) : data(size), size(size) {};
-      void put(K, V);
-      V *get(K);
+template<class K, class V>
+class SeparateChainedHashTable {
+
+private:
+  class Node {
+  public:
+    K key;
+    V value;
+    Node *next;
+
+    Node(K key, V value) : key(key), value(value), next(nullptr) {};
+  };
+
+  std::vector<Node *> data;
+  int size;
+public:
+  std::hash<K> hasher;
+
+  explicit SeparateChainedHashTable(int size) : data(size), size(size) {};
+
+  void put(K, V);
+
+  V *get(K);
 };
 
 /**
@@ -41,23 +45,22 @@ class SeparateChainedHashTable{
 * @param key key to insert
 * @param value value to insert
 */
-template <class K, class V>
-void SeparateChainedHashTable<K, V>::put(K key, V value){ 
-    int i = std::abs(static_cast<int>(hasher(key))) % size;
-    if (data[i] == nullptr){
-      data[i] = new Node(key, value); 
-    }
-    
-    Node *current = data[i];
-    while(current->next != nullptr and current->key != key){
-      current = current->next;  
-    }
-    if(current->key == key){
-      current->value = value;
-    }
-    else{
-      current->next = new Node(key, value);
-    }
+template<class K, class V>
+void SeparateChainedHashTable<K, V>::put(K key, V value) {
+  int i = std::abs(static_cast<int>(hasher(key))) % size;
+  if (data[i] == nullptr) {
+    data[i] = new Node(key, value);
+  }
+
+  Node *current = data[i];
+  while (current->next != nullptr and current->key != key) {
+    current = current->next;
+  }
+  if (current->key == key) {
+    current->value = value;
+  } else {
+    current->next = new Node(key, value);
+  }
 }
 
 
@@ -72,19 +75,19 @@ void SeparateChainedHashTable<K, V>::put(K key, V value){
 *
 * @return value associated with given key or nullptr
 */
-template <class K, class V>
-V *SeparateChainedHashTable<K, V>::get(K key){
-    int i = std::abs(static_cast<int>(hasher(key))) % size;
-    Node *current = data[i];
-    if (current == nullptr){
-      return nullptr;  
-    }
-    while(current->next != nullptr and current->key != key){
-      current = current->next;  
-    }
-    if(current->key == key){
-      return &current->value;
-    } 
+template<class K, class V>
+V *SeparateChainedHashTable<K, V>::get(K key) {
+  int i = std::abs(static_cast<int>(hasher(key))) % size;
+  Node *current = data[i];
+  if (current == nullptr) {
+    return nullptr;
+  }
+  while (current->next != nullptr and current->key != key) {
+    current = current->next;
+  }
+  if (current->key == key) {
+    return &current->value;
+  }
 }
 
 #endif // ALGOS_DATA_STRUCTURES_SEPARATE_CHAINED_HASH_TABLE_H_
