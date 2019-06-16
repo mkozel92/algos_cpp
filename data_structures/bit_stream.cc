@@ -23,7 +23,7 @@ void BitStream::WriteBit(bool a_bit) {
 
 std::string BitStream::ReadStream() {
   std::string a_string;
-  while (!this->Empty()){
+  while (!this->Empty()) {
     a_string += ReadByte();
   }
   return a_string;
@@ -31,7 +31,7 @@ std::string BitStream::ReadStream() {
 
 char BitStream::ReadByte() {
   char byte = 0;
-  for (int i = 1; i < 256; i *= 2){
+  for (int i = 1; i < 256; i *= 2) {
     if (ReadBit())
       byte += i;
   }
@@ -39,8 +39,11 @@ char BitStream::ReadByte() {
 }
 
 bool BitStream::ReadBit() {
-  bool a_bit = buffer_.front();
-  buffer_.pop();
-  return a_bit;
+  if (!buffer_.empty()) {
+    bool a_bit = buffer_.front();
+    buffer_.pop();
+    return a_bit;
+  }
+  return false;
 }
 

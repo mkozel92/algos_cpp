@@ -41,6 +41,8 @@ public:
 
   void print_heap();
 
+  int size();
+
   T remove();
 };
 
@@ -147,6 +149,16 @@ void BinaryHeap<T>::print_heap() {
     std::cout << data[i] << " ";
   }
   std::cout << std::endl;
+}
+
+/**
+ *
+ * @tparam T type of data in the heap
+ * @return size of the heap
+ */
+template<class T>
+int BinaryHeap<T>::size() {
+  return current_size;
 }
 
 
