@@ -24,7 +24,7 @@ bool BipartiteDfs(const Graph &a_graph, std::vector<int> *groups, \
     return (*groups)[vertex] == group;
   }
   (*groups)[vertex] = group;
-  for (auto v : a_graph.adjacent(vertex)) {
+  for (auto v : a_graph.Adjacent(vertex)) {
     if (!BipartiteDfs(a_graph, groups, v, (group + 1) % 2))
       return false;
   }
@@ -47,7 +47,7 @@ bool HasCycleDfs(const Digraph &a_graph, int vertex, std::vector<bool> *visited,
 
   (*visited)[vertex] = true;
   currently_processed->insert(vertex);
-  for (auto v : a_graph.adjacent(vertex)) {
+  for (auto v : a_graph.Adjacent(vertex)) {
     if (HasCycleDfs(a_graph, v, visited, currently_processed))
       return true;
   }
@@ -62,7 +62,7 @@ bool HasCycleDfs(const Digraph &a_graph, int vertex, std::vector<bool> *visited,
  * @return true if given graph is bipartite
  */
 bool IsBipartite(const Graph &a_graph) {
-  std::vector<int> groups(a_graph.graph_size, -1);
+  std::vector<int> groups(a_graph.Size(), -1);
   return BipartiteDfs(a_graph, &groups, 0, 0);
 }
 
@@ -73,7 +73,7 @@ bool IsBipartite(const Graph &a_graph) {
  */
 bool HasCycle(const Digraph &a_graph) {
   std::unordered_set<int> currently_processed;
-  std::vector<bool> visited(a_graph.graph_size, false);
+  std::vector<bool> visited(a_graph.Size(), false);
   return HasCycleDfs(a_graph, 0, &visited, &currently_processed);
 }
 
@@ -83,8 +83,8 @@ bool HasCycle(const Digraph &a_graph) {
  * @return true if there is Euler tour
  */
 bool HasEulerTour(const Graph &a_graph) {
-  for (int i = 0; i < a_graph.graph_size; i++) {
-    if (a_graph.adjacent(i).size() % 2 != 0)
+  for (int i = 0; i < a_graph.Size(); i++) {
+    if (a_graph.Adjacent(i).size() % 2 != 0)
       return false;
   }
   return true;

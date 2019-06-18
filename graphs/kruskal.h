@@ -15,7 +15,7 @@
 *
 * @return True if first is bigger
 */
-bool compare_edge_ptrs(const std::shared_ptr<Edge> &, \
+bool CompareEdgePointers(const std::shared_ptr<Edge> &, \
                        const std::shared_ptr<Edge> &);
 
 /**
@@ -25,7 +25,7 @@ bool compare_edge_ptrs(const std::shared_ptr<Edge> &, \
 *
 * @return set of mst edges
 */
-std::unordered_set<std::shared_ptr<Edge>> kruskal(const WeightedGraph &);
+std::unordered_set<std::shared_ptr<Edge>> Kruskal(const WeightedGraph &);
 
 
 #endif // ALGOS_GRAPHS_KRUSKAL_H_

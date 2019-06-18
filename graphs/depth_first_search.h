@@ -15,15 +15,15 @@
 * @param v initial vertex
 * @param from_ from which vertex the recursive call is coming
 */
-void recursive_dfs(const Graph &g, std::vector<bool> *visited, \
+void RecursiveDfs(const Graph &g, std::vector<bool> *visited, \
                    std::vector<int> *visited_from, int v, int from_) {
   if ((*visited)[v]) {
     return;
   }
   (*visited)[v] = true;
   (*visited_from)[v] = from_;
-  for (auto vertex: g.adjacent(v)) {
-    recursive_dfs(g, visited, visited_from, vertex, v);
+  for (auto vertex: g.Adjacent(v)) {
+    RecursiveDfs(g, visited, visited_from, vertex, v);
   }
 }
 
@@ -37,7 +37,7 @@ void recursive_dfs(const Graph &g, std::vector<bool> *visited, \
 * @param visited_from keeps track of paths to the veritces
 * @param v initial vertex
 */
-void iterative_dfs(const Graph &g, std::vector<bool> *visited, \
+void IterativeDfs(const Graph &g, std::vector<bool> *visited, \
                    std::vector<int> *visited_from, int v) {
   std::stack<int> s;
   (*visited)[v] = true;
@@ -46,7 +46,7 @@ void iterative_dfs(const Graph &g, std::vector<bool> *visited, \
   while (!s.empty()) {
     int top = s.top();
     s.pop();
-    for (auto vertex : g.adjacent(top)) {
+    for (auto vertex : g.Adjacent(top)) {
       if (!(*visited)[vertex]) {
         (*visited)[vertex] = true;
         (*visited_from)[vertex] = top;

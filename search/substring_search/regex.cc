@@ -45,19 +45,19 @@ ALWDigraph BuildNFA(const std::string &regex) {
       if (regex[or_operator] == '|') {
         lp = a_stack.top();
         a_stack.pop();
-        nfa.add_edge(lp, or_operator + 1, 0);
-        nfa.add_edge(or_operator, i, 0);
+        nfa.AddEdge(lp, or_operator + 1, 0);
+        nfa.AddEdge(or_operator, i, 0);
       } else
         lp = or_operator;
     }
 
     if (i < len - 1 && regex[i + 1] == '*') {
-      nfa.add_edge(lp, i + 1, 0);
-      nfa.add_edge(i + 1, lp, 0);
+      nfa.AddEdge(lp, i + 1, 0);
+      nfa.AddEdge(i + 1, lp, 0);
     }
 
     if (c == '(' || c == ')' || c == '*')
-      nfa.add_edge(i, i + 1, 0);
+      nfa.AddEdge(i, i + 1, 0);
   }
   return nfa;
 }
@@ -74,8 +74,8 @@ void Dfs(const ALWDigraph &a_graph, \
     return;
 
   reachable_states->insert(vertex);
-  for (auto edge : a_graph.adjacent(vertex))
-    Dfs(a_graph, reachable_states, edge->to());
+  for (auto edge : a_graph.Adjacent(vertex))
+    Dfs(a_graph, reachable_states, edge->To());
 }
 
 /**

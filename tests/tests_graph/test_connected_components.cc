@@ -5,25 +5,25 @@
 
 TEST(graph_test, connected_componentss_test){
   ALGraph g(10);
-  g.add_edge(0,1);
-  g.add_edge(1,2);
-  g.add_edge(1,3);
-  g.add_edge(5,6);
-  g.add_edge(5,7);
-  g.add_edge(8,9);
+  g.AddEdge(0,1);
+  g.AddEdge(1,2);
+  g.AddEdge(1,3);
+  g.AddEdge(5,6);
+  g.AddEdge(5,7);
+  g.AddEdge(8,9);
   ConnectedComponents cc(&g);
-  cc.compute();
+  cc.Compute();
 
-  EXPECT_TRUE(cc.is_connected(0, 1));
-  EXPECT_TRUE(cc.is_connected(0, 2));
-  EXPECT_TRUE(cc.is_connected(1, 3));
-  EXPECT_TRUE(cc.is_connected(5, 7));
-  EXPECT_TRUE(cc.is_connected(8, 9));
+  EXPECT_TRUE(cc.IsConnected(0, 1));
+  EXPECT_TRUE(cc.IsConnected(0, 2));
+  EXPECT_TRUE(cc.IsConnected(1, 3));
+  EXPECT_TRUE(cc.IsConnected(5, 7));
+  EXPECT_TRUE(cc.IsConnected(8, 9));
 
-  EXPECT_FALSE(cc.is_connected(1, 9));
-  EXPECT_FALSE(cc.is_connected(0, 5));
-  EXPECT_FALSE(cc.is_connected(0, 7));
-  EXPECT_FALSE(cc.is_connected(7, 9));
-  EXPECT_FALSE(cc.is_connected(3, 9));
-  EXPECT_FALSE(cc.is_connected(0, 6));
+  EXPECT_FALSE(cc.IsConnected(1, 9));
+  EXPECT_FALSE(cc.IsConnected(0, 5));
+  EXPECT_FALSE(cc.IsConnected(0, 7));
+  EXPECT_FALSE(cc.IsConnected(7, 9));
+  EXPECT_FALSE(cc.IsConnected(3, 9));
+  EXPECT_FALSE(cc.IsConnected(0, 6));
 }

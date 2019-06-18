@@ -7,26 +7,26 @@
 
 TEST(graph, classification_algos){
   ALGraph g(5);
-  g.add_edge(0, 2);
-  g.add_edge(0, 3);
-  g.add_edge(0, 4);
-  g.add_edge(1, 3);
-  g.add_edge(1, 4);
+  g.AddEdge(0, 2);
+  g.AddEdge(0, 3);
+  g.AddEdge(0, 4);
+  g.AddEdge(1, 3);
+  g.AddEdge(1, 4);
   EXPECT_TRUE(IsBipartite(g));
   
-  g.add_edge(2, 4);
+  g.AddEdge(2, 4);
   EXPECT_FALSE(IsBipartite(g));
   
   ALDigraph dg(5);
-  dg.add_edge(0, 2);
-  dg.add_edge(0, 3);
-  dg.add_edge(0, 4);
-  dg.add_edge(1, 3);
-  dg.add_edge(1, 4);
-  dg.add_edge(2, 4);
+  dg.AddEdge(0, 2);
+  dg.AddEdge(0, 3);
+  dg.AddEdge(0, 4);
+  dg.AddEdge(1, 3);
+  dg.AddEdge(1, 4);
+  dg.AddEdge(2, 4);
   EXPECT_FALSE(HasCycle(dg));
 
-  dg.add_edge(4, 0);
+  dg.AddEdge(4, 0);
   EXPECT_TRUE(HasCycle(dg));
 
 }

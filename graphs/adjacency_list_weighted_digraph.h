@@ -12,16 +12,16 @@
 */
 class ALWDigraph : public WeightedDigraph {
 public:
-  explicit ALWDigraph(int size) : WeightedDigraph(size), graph(size) {};
+  explicit ALWDigraph(int size) : WeightedDigraph(size), graph_(size) {};
 
-  std::vector<std::unordered_set<std::shared_ptr<DirectedEdge>>> graph;
-  std::unordered_set<std::shared_ptr<DirectedEdge>> edges;
+  std::vector<std::unordered_set<std::shared_ptr<DirectedEdge>>> graph_;
+  std::unordered_set<std::shared_ptr<DirectedEdge>> edges_;
 
-  std::unordered_set<std::shared_ptr<DirectedEdge>> adjacent(int) const override;
+  std::unordered_set<std::shared_ptr<DirectedEdge>> Adjacent(int) const override;
 
-  std::unordered_set<std::shared_ptr<DirectedEdge>> get_edges() const override;
+  std::unordered_set<std::shared_ptr<DirectedEdge>> GetEdges() const override;
 
-  void add_edge(int, int, float) override;
+  void AddEdge(int, int, float) override;
 };
 
 #endif //ALGOS_GRAPHS_ADJACENCY_LIST_WEIGHTED_DIGRAPH_H_

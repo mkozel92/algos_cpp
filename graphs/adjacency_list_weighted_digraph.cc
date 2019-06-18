@@ -2,17 +2,17 @@
 #include<memory>
 
 /**
-* @brief get all vertices adjacent to given vertex
+* @brief get all vertices Adjacent to given vertex
 * complexity O(1)
 *
 * @param v a vertex
 *
-* @return unordered_set of adjacent vertices
+* @return unordered_set of Adjacent vertices
 */
 std::unordered_set<std::shared_ptr<DirectedEdge>>\
- ALWDigraph::adjacent(int v) const {
-  assert(v < graph_size);
-  return graph[v];
+ ALWDigraph::Adjacent(int v) const {
+  assert(v < Size());
+  return graph_[v];
 }
 
 /**
@@ -23,20 +23,20 @@ std::unordered_set<std::shared_ptr<DirectedEdge>>\
 * @param v_2 second vertex to connect
 * @param weight weight of the edge
 */
-void ALWDigraph::add_edge(int v_1, int v_2, float weight) {
+void ALWDigraph::AddEdge(int v_1, int v_2, float weight) {
 
-  assert(v_1 < graph_size);
-  assert(v_2 < graph_size);
+  assert(v_1 < Size());
+  assert(v_2 < Size());
 
   std::shared_ptr<DirectedEdge> new_edge\
  = std::make_shared<DirectedEdge>(v_1, v_2, weight);
-  graph[v_1].insert(new_edge);
-  edges.insert(new_edge);
+  graph_[v_1].insert(new_edge);
+  edges_.insert(new_edge);
 }
 
 std::unordered_set<std::shared_ptr<DirectedEdge>>\
- ALWDigraph::get_edges() const {
-  return edges;
+ ALWDigraph::GetEdges() const {
+  return edges_;
 }
 
 

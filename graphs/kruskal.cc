@@ -16,7 +16,7 @@
 *
 * @return true if the second is bigger
 */
-bool compare_edge_ptrs(const std::shared_ptr<Edge>& edge_1, \
+bool CompareEdgePointers(const std::shared_ptr<Edge>& edge_1, \
                        const std::shared_ptr<Edge>& edge_2) {
   return *edge_1 < *edge_2;
 }
@@ -29,18 +29,18 @@ bool compare_edge_ptrs(const std::shared_ptr<Edge>& edge_1, \
 *
 * @return set of edges that are in mst
 */
-std::unordered_set<std::shared_ptr<Edge>> kruskal(const WeightedGraph &a_graph) {
+std::unordered_set<std::shared_ptr<Edge>> Kruskal(const WeightedGraph &a_graph) {
   std::vector<std::shared_ptr<Edge>> edges;
-  WeightedQuickUnion wqu(a_graph.graph_size);
+  WeightedQuickUnion wqu(a_graph.Size());
   std::unordered_set<std::shared_ptr<Edge>> mst;
-  for (const auto& e: a_graph.get_edges()) {
+  for (const auto& e: a_graph.GetEdges()) {
     edges.push_back(e);
   }
-  sort(edges.begin(), edges.end(), compare_edge_ptrs);
+  sort(edges.begin(), edges.end(), CompareEdgePointers);
 
   for (const auto& e : edges) {
-    int v_1 = e->either();
-    int v_2 = e->other(v_1);
+    int v_1 = e->Either();
+    int v_2 = e->Other(v_1);
     if (!wqu.Connected(v_1, v_2)) {
       wqu.Union(v_1, v_2);
       mst.insert(e);

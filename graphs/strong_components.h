@@ -10,18 +10,18 @@
 */
 class StrongComponents {
 private:
-  Digraph *g;
-  std::vector<int> vertex_group;
-  std::vector<bool> visited;
+  Digraph *a_graph_;
+  std::vector<int> vertex_group_;
+  std::vector<bool> visited_;
 public:
-  explicit StrongComponents(Digraph *g) : g(g), vertex_group(g->graph_size, 0), \
-                                     visited(g->graph_size, false) {};
+  explicit StrongComponents(Digraph *g) : a_graph_(g), vertex_group_(g->Size(), 0), \
+                                     visited_(g->Size(), false) {};
 
-  void compute();
+  void Compute();
 
-  void dfs(Digraph *, int, int, std::stack<int> *);
+  void Dfs(Digraph *, int, int, std::stack<int> *);
 
-  bool is_connected(int, int);
+  bool IsConnected(int, int);
 };
 
 #endif // ALGOS_GRAPHS_STRONG_COMPONENTS_H_

@@ -23,8 +23,8 @@ void TopSort(int vertex, const WeightedDigraph &a_graph, std::stack<int> *top_so
   if ((*visited)[vertex])
     return;
 
-  for (auto v : a_graph.adjacent(vertex)) {
-    TopSort(v->to(), a_graph, top_sorted, visited);
+  for (auto v : a_graph.Adjacent(vertex)) {
+    TopSort(v->To(), a_graph, top_sorted, visited);
   }
   top_sorted->push(vertex);
 }
@@ -40,10 +40,10 @@ void Relax(int vertex, const WeightedDigraph &a_graph, \
            std::vector<float> *distance_to, \
            std::vector<int> *visited_from) {
 
-  for (auto edge : a_graph.adjacent(vertex)) {
-    if ((*distance_to)[vertex] + edge->get_weight() < (*distance_to)[edge->to()]) {
-      (*distance_to)[edge->to()] = (*distance_to)[vertex] + edge->get_weight();
-      (*visited_from)[edge->to()] = vertex;
+  for (auto edge : a_graph.Adjacent(vertex)) {
+    if ((*distance_to)[vertex] + edge->GetWeight() < (*distance_to)[edge->To()]) {
+      (*distance_to)[edge->To()] = (*distance_to)[vertex] + edge->GetWeight();
+      (*visited_from)[edge->To()] = vertex;
     }
   }
 }
@@ -59,7 +59,7 @@ void Relax(int vertex, const WeightedDigraph &a_graph, \
 void ShortestPath(const WeightedDigraph &a_graph, std::vector<float> *distance_to, \
                   std::vector<int> *visited_from) {
 
-  const int size = a_graph.graph_size;
+  const int size = a_graph.Size();
   std::vector<bool> visited(size, false);
 
   std::stack<int> top_sorted;

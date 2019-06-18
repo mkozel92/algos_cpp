@@ -10,18 +10,18 @@
 */
 class ConnectedComponents {
 private:
-  Graph *g;
-  std::vector<int> vertex_group;
-  std::vector<bool> visited;
+  Graph *a_graph_;
+  std::vector<int> vertex_group_;
+  std::vector<bool> visited_;
 public:
-  explicit ConnectedComponents(Graph *g) : g(g), vertex_group(g->graph_size, 0), \
-                                     visited(g->graph_size, false) {};
+  explicit ConnectedComponents(Graph *g) : a_graph_(g), vertex_group_(g->Size(), 0), \
+                                     visited_(g->Size(), false) {};
 
-  void compute();
+  void Compute();
 
-  void dfs(int, int);
+  void Dfs(int, int);
 
-  bool is_connected(int, int);
+  bool IsConnected(int, int);
 };
 
 #endif // ALGOS_GRAPHS_CONNECTED_COMPONENTS_H_

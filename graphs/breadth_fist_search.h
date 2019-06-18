@@ -16,7 +16,7 @@
 * @param visited_from keeps track of paths to the veritces
 * @param v initial vertex
 */
-void iterative_bfs(const Graph &g, std::vector<bool> *visited, \
+void IterativeBfs(const Graph &g, std::vector<bool> *visited, \
                    std::vector<int> *visited_from, int v) {
   std::queue<int> s;
   (*visited)[v] = true;
@@ -25,7 +25,7 @@ void iterative_bfs(const Graph &g, std::vector<bool> *visited, \
   while (!s.empty()) {
     int front = s.front();
     s.pop();
-    for (auto vertex : g.adjacent(front)) {
+    for (auto vertex : g.Adjacent(front)) {
       if (!(*visited)[vertex]) {
         (*visited)[vertex] = true;
         (*visited_from)[vertex] = front;

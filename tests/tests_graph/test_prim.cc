@@ -5,20 +5,20 @@
 
 TEST(prim, test_prim){
   ALWGraph g(10);
-  g.add_edge(0, 1, 100);
-  g.add_edge(1, 2, 6);
-  g.add_edge(2, 3, 7);
-  g.add_edge(3, 4, 8);
-  g.add_edge(4, 1, 9);
-  g.add_edge(3, 2, 10);
-  g.add_edge(0, 4, 11);
-  g.add_edge(0, 2, 12);
-  auto mst = prim(g);
+  g.AddEdge(0, 1, 100);
+  g.AddEdge(1, 2, 6);
+  g.AddEdge(2, 3, 7);
+  g.AddEdge(3, 4, 8);
+  g.AddEdge(4, 1, 9);
+  g.AddEdge(3, 2, 10);
+  g.AddEdge(0, 4, 11);
+  g.AddEdge(0, 2, 12);
+  auto mst = Prim(g);
   std::vector<int> correct = {0, 1, 2, 2, 3, 3, 4, 4};
   std::vector<int> computed;
   for(auto e: mst){
-    int v_1 = e->either();
-    int v_2 = e->other(v_1);
+    int v_1 = e->Either();
+    int v_2 = e->Other(v_1);
     computed.push_back(v_1);
     computed.push_back(v_2);
   }

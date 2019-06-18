@@ -10,13 +10,13 @@
 */
 class ALGraph : public Graph {
 public:
-  std::vector<std::unordered_set<int>> graph;
+  std::vector<std::unordered_set<int>> graph_;
 
-  explicit ALGraph(int size) : Graph(size), graph(size) {}
+  explicit ALGraph(int size) : Graph(size), graph_(size) {}
 
-  std::unordered_set<int> adjacent(int) const override;
+  std::unordered_set<int> Adjacent(int) const override;
 
-  void add_edge(int, int) override;
+  void AddEdge(int, int) override;
 };
 
 #endif //ALGOS_GRAPHS_ADJACENCY_LIST_GRAPH_H_

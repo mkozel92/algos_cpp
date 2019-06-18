@@ -9,76 +9,76 @@
 */
 class DirectedEdge {
 private:
-  const int _from;
-  const int _to;
-  const float weight;
+  const int from_;
+  const int to_;
+  const float weight_;
 public:
-  DirectedEdge(int _from, int _to, float weight) : _from(_from), \
-                                           _to(_to), \
-                                           weight(weight) {};
+  DirectedEdge(int from, int to, float weight) : from_(from), \
+                                           to_(to), \
+                                           weight_(weight) {};
 
   /**
-  * @brief gets the _from vertex adjacent to this edge
+  * @brief gets the _from vertex Adjacent to this edge
   *
   * @return a vertex
   */
-  int from() {
-    return _from;
+  int From() {
+    return from_;
   };
 
   /**
-  * @brief gets the _to vertex adjacent to this edge
+  * @brief gets the _to vertex Adjacent to this edge
   *
   * @return a vertex
   */
-  int to() {
-    return _to;
+  int To() {
+    return to_;
   }
 
   /**
-  * @brief gets other vertex adjacent to this edge
+  * @brief gets other vertex Adjacent to this edge
   *
   * @param v first vertex
   *
-  * @return other adjacent vertex
+  * @return other Adjacent vertex
   */
-  int other(int v) {
-    assert(_from == v || _to == v);
-    if (_to == v) {
-      return _from;
+  int Other(int v) {
+    assert(from_ == v || to_ == v);
+    if (to_ == v) {
+      return from_;
     }
-    return _to;
+    return to_;
   };
 
   /**
   * @return weight of this edge
   */
-  float get_weight() const {
-    return weight;
+  float GetWeight() const {
+    return weight_;
   }
 
   bool operator>(const Edge &other) {
-    return weight > other.get_weight();
+    return weight_ > other.GetWeight();
   };
 
   bool operator>=(const Edge &other) {
-    return weight >= other.get_weight();
+    return weight_ >= other.GetWeight();
   };
 
   bool operator<(const Edge &other) {
-    return weight < other.get_weight();
+    return weight_ < other.GetWeight();
   };
 
   bool operator<=(const Edge &other) {
-    return weight <= other.get_weight();
+    return weight_ <= other.GetWeight();
   };
 
   bool operator==(const Edge &other) {
-    return weight == other.get_weight();
+    return weight_ == other.GetWeight();
   };
 
   bool operator!=(const Edge &other) {
-    return weight != other.get_weight();
+    return weight_ != other.GetWeight();
   };
 };
 

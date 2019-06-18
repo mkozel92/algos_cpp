@@ -5,18 +5,18 @@
 #include"../data_structures/binary_heap.h"
 #include<iostream>
 
-typedef std::shared_ptr<Edge> edge_ptr;
+typedef std::shared_ptr<Edge> EdgePtr;
 
 /**
-* @brief visit a vertex -> add all adjacent edges to the min heap
+* @brief visit a vertex -> add all Adjacent edges to the min heap
 *
 * @param int vertex to visit
 * @param WeightedGraph graph to process
 * @param std::vector visited vertices
 * @param BinaryHeap heap to keep edges ordered by weight
 */
-void visit(int, const WeightedGraph &, \
-           std::vector<bool> *, BinaryHeap<edge_ptr> *);
+void Visit(int, const WeightedGraph &, \
+           std::vector<bool> *, BinaryHeap<EdgePtr> *);
 
 /**
 * @brief prim algo to compute mst
@@ -25,5 +25,5 @@ void visit(int, const WeightedGraph &, \
 *
 * @return set of edges that are in mst
 */
-std::unordered_set<edge_ptr> prim(const WeightedGraph &);
+std::unordered_set<EdgePtr> Prim(const WeightedGraph &);
 

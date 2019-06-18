@@ -24,11 +24,11 @@ void Relax(int vertex, const WeightedDigraph &a_graph, \
            std::vector<int> *visited_from,
            std::unordered_set<int> *updated) {
 
-  for (auto edge : a_graph.adjacent(vertex)) {
-    if ((*distance_to)[vertex] + edge->get_weight() < (*distance_to)[edge->to()]) {
-      (*distance_to)[edge->to()] = (*distance_to)[vertex] + edge->get_weight();
-      (*visited_from)[edge->to()] = vertex;
-      updated->insert(edge->to());
+  for (auto edge : a_graph.Adjacent(vertex)) {
+    if ((*distance_to)[vertex] + edge->GetWeight() < (*distance_to)[edge->To()]) {
+      (*distance_to)[edge->To()] = (*distance_to)[vertex] + edge->GetWeight();
+      (*visited_from)[edge->To()] = vertex;
+      updated->insert(edge->To());
     }
   }
 }
@@ -38,16 +38,15 @@ void Relax(int vertex, const WeightedDigraph &a_graph, \
  * complexity O((V+E)^2)
  * @param a_graph a graph to process
  * @param distance_to current shortest distances to vertices
- * @param visited_from current shorest paths to vertices
+ * @param visited_from current shortest paths to vertices
  */
 void BellmanFord(const WeightedDigraph &a_graph, std::vector<float> *distance_to, \
                   std::vector<int> *visited_from) {
 
-  const int size = a_graph.graph_size;
   std::unordered_set<int> to_relax;
   std::unordered_set<int> updated;
   to_relax.insert(0);
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < a_graph.Size(); i++) {
     for (auto v : to_relax) {
       Relax(v, a_graph, distance_to, visited_from, &updated);
     }
@@ -56,6 +55,6 @@ void BellmanFord(const WeightedDigraph &a_graph, std::vector<float> *distance_to
   }
 
 }
-} // top_sort search
+} // bellman fortd
 
 

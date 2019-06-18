@@ -6,19 +6,19 @@
 
 
 /**
-* @brief visit a vertex -> add all adjacent edges to the min heap
+* @brief visit a vertex -> add all Adjacent edges to the min heap
 *
 * @param v vertex to visit
 * @param a_graph graph to process
 * @param visited vector of visited vertices
 * @param bh min heap that keeps sorted edges
 */
-void visit(int v, const WeightedGraph &a_graph, \
-           std::vector<bool> *visited, BinaryHeap<edge_ptr> *bh) {
+void Visit(int v, const WeightedGraph &a_graph, \
+           std::vector<bool> *visited, BinaryHeap<EdgePtr> *bh) {
   (*visited)[v] = true;
-  for (const auto &e: a_graph.adjacent(v)) {
-    int v_1 = e->either();
-    int v_2 = e->other(v_1);
+  for (const auto &e: a_graph.Adjacent(v)) {
+    int v_1 = e->Either();
+    int v_2 = e->Other(v_1);
     if (!(*visited)[v_1] || !(*visited)[v_2]) {
       bh->Insert(e);
     }
@@ -37,24 +37,24 @@ void visit(int v, const WeightedGraph &a_graph, \
 *
 * @return set of edges that are in MST
 */
-std::unordered_set<edge_ptr> prim(const WeightedGraph &a_graph) {
-  std::vector<bool> visited(a_graph.graph_size, false);
-  BinaryHeap<edge_ptr> bh([](edge_ptr e_1, \
-                             edge_ptr e_2)\
+std::unordered_set<EdgePtr> Prim(const WeightedGraph &a_graph) {
+  std::vector<bool> visited(a_graph.Size(), false);
+  BinaryHeap<EdgePtr> bh([](EdgePtr e_1, \
+                             EdgePtr e_2)\
  -> bool { return *e_1 < *e_2; });
-  std::unordered_set<edge_ptr> mst;
+  std::unordered_set<EdgePtr> mst;
 
-  visit(0, a_graph, &visited, &bh);
+  Visit(0, a_graph, &visited, &bh);
 
   while (!bh.IsEmpty()) {
-    edge_ptr e = bh.Remove();
-    int v_1 = e->either();
-    int v_2 = e->other(v_1);
+    EdgePtr e = bh.Remove();
+    int v_1 = e->Either();
+    int v_2 = e->Other(v_1);
     if (!visited[v_1] || !visited[v_2]) {
       if (!visited[v_1])
-        visit(v_1, a_graph, &visited, &bh);
+        Visit(v_1, a_graph, &visited, &bh);
       else
-        visit(v_2, a_graph, &visited, &bh);
+        Visit(v_2, a_graph, &visited, &bh);
       mst.insert(e);
     }
   }

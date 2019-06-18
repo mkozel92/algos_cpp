@@ -9,67 +9,67 @@
 */
 class Edge {
 private:
-  const int v_1;
-  const int v_2;
-  const float weight;
+  const int v_1_;
+  const int v_2_;
+  const float weight_;
 public:
-  Edge(int v_1, int v_2, float weight) : v_1(v_1), \
-                                           v_2(v_2), \
-                                           weight(weight) {};
+  Edge(int v_1, int v_2, float weight) : v_1_(v_1), \
+                                           v_2_(v_2), \
+                                           weight_(weight) {};
 
   /**
-  * @brief gets one of the vertices adjacent to this edge
+  * @brief gets one of the vertices Adjacent to this edge
   *
   * @return a vertex
   */
-  int either() {
-    return v_1;
+  int Either() {
+    return v_1_;
   };
 
   /**
-  * @brief gets other vertex adjacent to this edge
+  * @brief gets other vertex Adjacent to this edge
   *
   * @param v first vertex
   *
-  * @return other adjacent vertex
+  * @return other Adjacent vertex
   */
-  int other(int v) {
-    assert(v_1 == v || v_2 == v);
-    if (v_1 == v) {
-      return v_2;
+  int Other(int v) {
+    assert(v_1_ == v || v_2_ == v);
+    if (v_1_ == v) {
+      return v_2_;
     }
-    return v_1;
+    return v_1_;
   };
 
   /**
   * @return weight of this edge
   */
-  float get_weight() const {
-    return weight;
+  float GetWeight() const {
+    return weight_;
   }
 
   bool operator>(const Edge &other) {
-    return weight > other.get_weight();
+    return weight_ > other.GetWeight();
   };
 
   bool operator>=(const Edge &other) {
-    return weight >= other.get_weight();
+    return weight_ >= other.GetWeight();
   };
 
   bool operator<(const Edge &other) {
-    return weight < other.get_weight();
+    return weight_ < other.GetWeight();
   };
 
   bool operator<=(const Edge &other) {
-    return weight <= other.get_weight();
+    return weight_ <= other.GetWeight();
   };
 
   bool operator==(const Edge &other) {
-    return weight == other.get_weight();
+    return weight_ == other.GetWeight();
   };
 
   bool operator!=(const Edge &other) {
-    return weight != other.get_weight();
+    return weight_ != other.GetWeight();
   };
 };
 

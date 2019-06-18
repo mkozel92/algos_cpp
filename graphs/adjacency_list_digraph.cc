@@ -1,16 +1,16 @@
 #include"adjacency_list_digraph.h"
 
 /**
-* @brief get all vertices adjacent to given vertex
+* @brief get all vertices Adjacent to given vertex
 * complexity O(1)
 *
 * @param v a vertex
 *
-* @return unordered_set of adjacent vertices
+* @return unordered_set of Adjacent vertices
 */
-std::unordered_set<int> ALDigraph::adjacent(int v) const {
-  assert(v < graph_size && v >= 0);
-  return graph[v];
+std::unordered_set<int> ALDigraph::Adjacent(int v) const {
+  assert(v < Size() && v >= 0);
+  return graph_[v];
 }
 
 /**
@@ -20,12 +20,12 @@ std::unordered_set<int> ALDigraph::adjacent(int v) const {
 * @param v_1 first vertex to connect
 * @param v_2 second vertex to connect
 */
-void ALDigraph::add_edge(int v_1, int v_2) {
+void ALDigraph::AddEdge (int v_1, int v_2) {
 
-  assert(v_1 < graph_size && v_1 >= 0);
-  assert(v_2 < graph_size && v_2 >= 0);
+  assert(v_1 < Size() && v_1 >= 0);
+  assert(v_2 < Size() && v_2 >= 0);
 
-  graph[v_1].insert(v_2);
+  graph_[v_1].insert(v_2);
 }
 
 /**
@@ -33,11 +33,11 @@ void ALDigraph::add_edge(int v_1, int v_2) {
 *
 * @return new graph with reversed edges
 */
-ALDigraph *ALDigraph::reverse() {
-  auto reversed_graph = new ALDigraph(graph_size);
-  for (int i = 0; i < graph_size; i++) {
-    for (int j : this->adjacent(i)) {
-      reversed_graph->add_edge(j, i);
+ALDigraph *ALDigraph::Reverse() {
+  auto reversed_graph = new ALDigraph(Size());
+  for (int i = 0; i < Size(); i++) {
+    for (int j : this->Adjacent(i)) {
+      reversed_graph->AddEdge(j, i);
     }
   }
   return reversed_graph;

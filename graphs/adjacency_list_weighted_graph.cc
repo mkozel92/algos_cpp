@@ -2,16 +2,16 @@
 #include<memory>
 
 /**
-* @brief get all vertices adjacent to given vertex
+* @brief get all vertices Adjacent to given vertex
 * complexity O(1)
 *
 * @param v a vertex
 *
-* @return unordered_set of adjacent vertices
+* @return unordered_set of Adjacent vertices
 */
-std::unordered_set<std::shared_ptr<Edge>> ALWGraph::adjacent(int v) const {
-  assert(v < graph_size);
-  return graph[v];
+std::unordered_set<std::shared_ptr<Edge>> ALWGraph::Adjacent(int v) const {
+  assert(v < Size());
+  return graph_[v];
 }
 
 /**
@@ -22,19 +22,19 @@ std::unordered_set<std::shared_ptr<Edge>> ALWGraph::adjacent(int v) const {
 * @param v_2 second vertex to connect
 * @param weight weight of the edge
 */
-void ALWGraph::add_edge(int v_1, int v_2, float weight) {
+void ALWGraph::AddEdge(int v_1, int v_2, float weight) {
 
-  assert(v_1 < graph_size);
-  assert(v_2 < graph_size);
+  assert(v_1 < Size());
+  assert(v_2 < Size());
 
   std::shared_ptr<Edge> new_edge = std::make_shared<Edge>(v_1, v_2, weight);
-  graph[v_1].insert(new_edge);
-  graph[v_2].insert(new_edge);
-  edges.insert(new_edge);
+  graph_[v_1].insert(new_edge);
+  graph_[v_2].insert(new_edge);
+  edges_.insert(new_edge);
 }
 
-std::unordered_set<std::shared_ptr<Edge>> ALWGraph::get_edges() const {
-  return edges;
+std::unordered_set<std::shared_ptr<Edge>> ALWGraph::GetEdges() const {
+  return edges_;
 }
 
 
