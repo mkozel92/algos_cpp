@@ -11,7 +11,7 @@
 */
 class QuickFind {
 private:
-  std::vector<int> id_list;
+  std::vector<int> id_list_;
 public:
   /**
   * @brief initialization assigns each object to its own connected component
@@ -19,15 +19,15 @@ public:
   *
   * @param N number of objects that we can hold
   */
-  explicit QuickFind(int N) : id_list(N) {
-    for (int i = 0; i < id_list.size(); i++) {
-      id_list[i] = i;
+  explicit QuickFind(int N) : id_list_(N) {
+    for (int i = 0; i < id_list_.size(); i++) {
+      id_list_[i] = i;
     }
   };
 
-  bool connected(int, int);
+  bool Connected(int, int);
 
-  void union_(int, int);
+  void Union(int, int);
 };
 
 /**
@@ -39,8 +39,8 @@ public:
 *
 * @return True if the objects are in the same connected component
 */
-bool QuickFind::connected(int p, int q) {
-  return id_list[p] == id_list[q];
+bool QuickFind::Connected(int p, int q) {
+  return id_list_[p] == id_list_[q];
 }
 
 /**
@@ -50,13 +50,13 @@ bool QuickFind::connected(int p, int q) {
 * @param p id of the first object
 * @param q if of the second object
 */
-void QuickFind::union_(int p, int q) {
-  int p_id = id_list[p];
-  int q_id = id_list[q];
+void QuickFind::Union(int p, int q) {
+  int p_id = id_list_[p];
+  int q_id = id_list_[q];
   if (p_id != q_id) {
-    for (int i = 0; i < id_list.size(); i++) {
-      if (id_list[i] == q_id) {
-        id_list[i] = p_id;
+    for (int i = 0; i < id_list_.size(); i++) {
+      if (id_list_[i] == q_id) {
+        id_list_[i] = p_id;
       }
     }
   }

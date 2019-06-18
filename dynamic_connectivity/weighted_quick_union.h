@@ -15,8 +15,8 @@
 */
 class WeightedQuickUnion {
 private:
-  std::vector<int> id_list;
-  std::vector<int> sizes;
+  std::vector<int> id_list_;
+  std::vector<int> sizes_;
 public:
   /**
   * @brief initialization that assigns each object so its own connected component
@@ -24,17 +24,17 @@ public:
   *
   * @param N number of objects
   */
-  explicit WeightedQuickUnion(int N) : id_list(N), sizes(N, 1) {
-    for (int i = 0; i < id_list.size(); i++) {
-      id_list[i] = i;
+  explicit WeightedQuickUnion(int N) : id_list_(N), sizes_(N, 1) {
+    for (int i = 0; i < id_list_.size(); i++) {
+      id_list_[i] = i;
     }
   };
 
-  int root(int);
+  int Root(int);
 
-  bool connected(int, int);
+  bool Connected(int, int);
 
-  void union_(int, int);
+  void Union(int, int);
 };
 
 #endif // ALGOS_DYNAMIC_CONNECTIVITY_WEIGHTED_QUICK_UNION_H_

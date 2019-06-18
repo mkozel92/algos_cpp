@@ -41,8 +41,8 @@ std::unordered_set<std::shared_ptr<Edge>> kruskal(const WeightedGraph &a_graph) 
   for (const auto& e : edges) {
     int v_1 = e->either();
     int v_2 = e->other(v_1);
-    if (!wqu.connected(v_1, v_2)) {
-      wqu.union_(v_1, v_2);
+    if (!wqu.Connected(v_1, v_2)) {
+      wqu.Union(v_1, v_2);
       mst.insert(e);
     }
   }

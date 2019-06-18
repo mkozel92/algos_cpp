@@ -9,10 +9,10 @@
 *
 * @return root of the group the object p belongs to
 */
-int WeightedQuickUnion::root(int p) {
-  while (p != id_list[p]) {
-    id_list[p] = id_list[id_list[p]];
-    p = id_list[p];
+int WeightedQuickUnion::Root(int p) {
+  while (p != id_list_[p]) {
+    id_list_[p] = id_list_[id_list_[p]];
+    p = id_list_[p];
   }
   return p;
 }
@@ -26,8 +26,8 @@ int WeightedQuickUnion::root(int p) {
 *
 * @return True if the object are in the same connected component
 */
-bool WeightedQuickUnion::connected(int p, int q) {
-  return root(p) == root(q);
+bool WeightedQuickUnion::Connected(int p, int q) {
+  return Root(p) == Root(q);
 }
 
 /**
@@ -37,16 +37,16 @@ bool WeightedQuickUnion::connected(int p, int q) {
 * @param p id of the first object
 * @param q id of the second object
 */
-void WeightedQuickUnion::union_(int p, int q) {
-  int root_p = root(p);
-  int root_q = root(q);
+void WeightedQuickUnion::Union(int p, int q) {
+  int root_p = Root(p);
+  int root_q = Root(q);
   if (root_p != root_q) {
-    if (sizes[root_p] > sizes[root_q]) {
-      id_list[root_q] = root_p;
-      sizes[root_p] += sizes[root_q];
+    if (sizes_[root_p] > sizes_[root_q]) {
+      id_list_[root_q] = root_p;
+      sizes_[root_p] += sizes_[root_q];
     } else {
-      id_list[root_p] = root_q;
-      sizes[root_q] += sizes[root_p];
+      id_list_[root_p] = root_q;
+      sizes_[root_q] += sizes_[root_p];
     }
   }
 }

@@ -8,29 +8,29 @@
 * Each index od the id_list represents one object and the value on this index
 * points to another object from the same group. If the value on the index points to itself
 * it means that this object is the root of the group.
-* Each group is threfore represented as a tree
+* Each group is therefore represented as a tree
 */
 class QuickUnion {
 private:
-  std::vector<int> id_list;
+  std::vector<int> id_list_;
 public:
   /**
-  * @brief initialization assignins each object to its own connected component
+  * @brief initialization assigns each object to its own connected component
   * complexity O(N)
   *
   * @param N number of objects
   */
-  explicit QuickUnion(int N) : id_list(N) {
-    for (int i = 0; i < id_list.size(); i++) {
-      id_list[i] = i;
+  explicit QuickUnion(int N) : id_list_(N) {
+    for (int i = 0; i < id_list_.size(); i++) {
+      id_list_[i] = i;
     }
   };
 
-  int root(int);
+  int Root(int);
 
-  bool connected(int, int);
+  bool Connected(int, int);
 
-  void union_(int, int);
+  void Union(int, int);
 };
 
 /**
@@ -40,11 +40,11 @@ public:
 *
 * @param p id of the object we want to find the root for
 *
-* @return 
+* @return root of the object
 */
-int QuickUnion::root(int p) {
-  while (p != id_list[p]) {
-    p = id_list[p];
+int QuickUnion::Root(int p) {
+  while (p != id_list_[p]) {
+    p = id_list_[p];
   }
   return p;
 }
@@ -58,8 +58,8 @@ int QuickUnion::root(int p) {
 *
 * @return True if the object are in the same connected component
 */
-bool QuickUnion::connected(int p, int q) {
-  return root(p) == root(q);
+bool QuickUnion::Connected(int p, int q) {
+  return Root(p) == Root(q);
 
 }
 
@@ -70,10 +70,10 @@ bool QuickUnion::connected(int p, int q) {
 * @param p id of the first object
 * @param q id of the second object
 */
-void QuickUnion::union_(int p, int q) {
-  int root_p = root(p);
-  int root_q = root(q);
-  id_list[root_q] = id_list[root_p];
+void QuickUnion::Union(int p, int q) {
+  int root_p = Root(p);
+  int root_q = Root(q);
+  id_list_[root_q] = id_list_[root_p];
 }
 
 #endif // ALGOS_DYNAMIC_CONNECTIVITY_QUICK_UNION_H_
