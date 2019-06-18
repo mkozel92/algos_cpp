@@ -13,7 +13,7 @@
 *
 * @return unordered_set of all unique permutations
 */
-std::unordered_set<std::string> get_permutations(std::string a_string) {
+std::unordered_set<std::string> GetPermutations(std::string a_string) {
   if (a_string.length() == 1) {
     std::unordered_set<std::string> a_set = {a_string};
     return a_set;
@@ -23,7 +23,7 @@ std::unordered_set<std::string> get_permutations(std::string a_string) {
   for (int i = 0; i < a_string.length(); i++) {
     tmp = a_string;
     tmp.erase(i, 1);
-    for (const std::string &s : get_permutations(tmp)) {
+    for (const std::string &s : GetPermutations(tmp)) {
       a_set.insert(a_string[i] + s);
     }
   }

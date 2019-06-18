@@ -22,7 +22,7 @@
  * @param mem_dict: memoized solutions
  * @return: whether or not a_word is squashable
 			         */
-bool is_squashable(const std::string &a_word, const std::unordered_set<std::string> &dictionary, \
+bool IsSquashable(const std::string &a_word, const std::unordered_set<std::string> &dictionary, \
                    std::unordered_map<std::string, bool> *mem_dict) {
 
   if (mem_dict->find(a_word) != mem_dict->end()) {
@@ -37,7 +37,7 @@ bool is_squashable(const std::string &a_word, const std::unordered_set<std::stri
   for (int i = 0; i < a_word.length(); i++) {
     tmp = a_word;
     tmp.erase(i, 1);
-    if (is_squashable(tmp, dictionary, mem_dict) || tmp.length() == 0) {
+    if (IsSquashable(tmp, dictionary, mem_dict) || tmp.length() == 0) {
       (*mem_dict)[a_word] = true;
       return true;
     }

@@ -7,16 +7,16 @@
 TEST(test_is_squashable, true_tests){
   std::unordered_set<std::string> dictionary({"hello", "hell", "hel", "el", "l", "b"});
   std::unordered_map<std::string, bool> mem_dict;
-  EXPECT_TRUE(is_squashable("hello", dictionary, &mem_dict));
-  EXPECT_TRUE(is_squashable("hel", dictionary, &mem_dict));
-  EXPECT_TRUE(is_squashable("b", dictionary, &mem_dict));
+  EXPECT_TRUE(IsSquashable("hello", dictionary, &mem_dict));
+  EXPECT_TRUE(IsSquashable("hel", dictionary, &mem_dict));
+  EXPECT_TRUE(IsSquashable("b", dictionary, &mem_dict));
 }
 
 TEST(test_is_squashable, false_tests){
   std::unordered_set<std::string> dictionary({"hello", "hell", "hel", "el", "l", "b"});
   std::unordered_map<std::string, bool> mem_dict;
-  EXPECT_FALSE(is_squashable("helalo", dictionary, &mem_dict));
-  EXPECT_FALSE(is_squashable("heh", dictionary, &mem_dict));
-  EXPECT_FALSE(is_squashable("x", dictionary, &mem_dict));
+  EXPECT_FALSE(IsSquashable("helalo", dictionary, &mem_dict));
+  EXPECT_FALSE(IsSquashable("heh", dictionary, &mem_dict));
+  EXPECT_FALSE(IsSquashable("x", dictionary, &mem_dict));
 }
 
