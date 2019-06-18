@@ -8,10 +8,10 @@ TEST(compression, test_huffman) {
   BitStream original_stream(original_text);
   int original_length = original_stream.Length();
 
-  BitStream encoded_stream = bt.encode(original_text);
+  BitStream encoded_stream = bt.Encode(original_text);
   int encoded_length = encoded_stream.Length();
 
-  std::string decoded_text = bt.decode(&encoded_stream);
+  std::string decoded_text = bt.Decode(&encoded_stream);
   EXPECT_TRUE(original_length > encoded_length);
   EXPECT_EQ(decoded_text, original_text);
 }

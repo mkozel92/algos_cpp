@@ -10,7 +10,7 @@ namespace huffman {
  * @param second_node to compare
  * @return true if the first node has smaller frequency value
  */
-bool compare_nodes(NodePtr first_node, NodePtr second_node) {
+bool CompareNodes(NodePtr first_node, NodePtr second_node) {
   return first_node->frequency_ < second_node->frequency_;
 }
 
@@ -22,7 +22,7 @@ void BinaryTrie::BuildTrie(const std::string &text) {
   for (auto c : text)
     frequencies[c] += 1;
 
-  BinaryHeap<NodePtr> min_heap(compare_nodes);
+  BinaryHeap<NodePtr> min_heap(CompareNodes);
   for (const auto &f : frequencies) {
     NodePtr new_node = std::make_shared<Node>(f.second, true);
     new_node->value_ = f.first;
@@ -78,7 +78,7 @@ void BinaryTrie::RecBuildEncodingMap(NodePtr node, std::vector<bool> *code) {
  * encode a string to BitStream using huffman encoding
  * @return encoded bit stream
  */
-BitStream BinaryTrie::encode(const std::string &a_string) {
+BitStream BinaryTrie::Encode(const std::string &a_string) {
   BitStream bit_stream;
   for (const auto &c : a_string) {
     auto encoded = encoding_map_[c];
@@ -93,7 +93,7 @@ BitStream BinaryTrie::encode(const std::string &a_string) {
  * @param bit_stream encoded bit stream
  * @return decoded sttring
  */
-std::string BinaryTrie::decode(BitStream *bit_stream) {
+std::string BinaryTrie::Decode(BitStream *bit_stream) {
   std::string decoded;
   NodePtr current = root_;
   while (!bit_stream->Empty()) {

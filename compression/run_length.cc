@@ -18,7 +18,7 @@ int Count(BitStream* bit_stream, int max_count, bool which_bit){
 }
 
 
-BitStream compress(BitStream* bit_stream){
+BitStream Compress(BitStream* bit_stream){
   bool which_bit = true;
   BitStream compressed;
   int count;
@@ -30,7 +30,7 @@ BitStream compress(BitStream* bit_stream){
   return compressed;
 }
 
-BitStream expand(BitStream* bit_stream){
+BitStream Expand(BitStream* bit_stream){
   bool which_bit = true;
   BitStream expanded;
   int count;

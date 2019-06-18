@@ -73,14 +73,14 @@ public:
  * encode a string to BitStream using huffman encoding
  * @return encoded bit stream
  */
-  BitStream encode(const std::string &);
+  BitStream Encode(const std::string &);
 
 /**
  * decodes bit stream into a string
  * @param bit_stream encoded bit stream
  * @return decoded sttring
  */
-  std::string decode(BitStream *bit_stream);
+  std::string Decode(BitStream *bit_stream);
 };
 
 } //huffman

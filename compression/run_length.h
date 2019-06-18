@@ -10,8 +10,8 @@
 
 int Count(BitStream* bit_stream, int max_count, bool which_bit);
 
-BitStream compress(BitStream* bit_stream);
+BitStream Compress(BitStream* bit_stream);
 
-BitStream expand(BitStream* bit_stream);
+BitStream Expand(BitStream* bit_stream);
 
 #endif //ALGOS_COMPRESSION_RUN_LENGTH_H

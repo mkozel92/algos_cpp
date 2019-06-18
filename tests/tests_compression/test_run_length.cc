@@ -7,10 +7,10 @@ TEST(compression, test_run_length){
   std::string a_string = "this is some string";
   BitStream bs(a_string);
   int original_length = bs.Length();
-  BitStream compressed = compress(&bs);
+  BitStream compressed = Compress(&bs);
 
   int compressed_lenght = compressed.Length();
-  BitStream expanded = expand(&compressed);
+  BitStream expanded = Expand(&compressed);
   int expanded_length =  expanded.Length();
   std::string retrieved_string = expanded.ReadStream();
 
