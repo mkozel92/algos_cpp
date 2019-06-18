@@ -13,25 +13,26 @@ namespace binary_tree {
 * @tparam V type of values in the tree
 */
 
+
 template<class K, class V>
 class Node {
 public:
-  K key;
-  V value;
-  std::shared_ptr<Node> left;
-  std::shared_ptr<Node> right;
-  std::shared_ptr<Node> next;
-  int count;
+  K key_;
+  V value_;
+  std::shared_ptr<Node> left_;
+  std::shared_ptr<Node> right_;
+  std::shared_ptr<Node> next_;
+  int count_;
 
-  Node(K key, V value) : key(key), value(value), count(1) {
-    left = nullptr;
-    right = nullptr;
-    next = nullptr;
+  Node(K key, V value) : key_(key), value_(value), count_(1) {
+    left_ = nullptr;
+    right_ = nullptr;
+    next_ = nullptr;
   };
 };
 
 template<class K, class V>
-using node_ptr = std::shared_ptr<Node<K, V>>;
+using NodePtr = std::shared_ptr<Node<K, V>>;
 
 
 /**
@@ -43,25 +44,25 @@ using node_ptr = std::shared_ptr<Node<K, V>>;
 template<class K, class V>
 class BinaryTree {
 private:
-  node_ptr<K, V> put(node_ptr<K, V>, K, V);
+  NodePtr <K, V> Put(NodePtr <K, V>, K, V);
 
-  int size(node_ptr<K, V>);
+  int Size(NodePtr <K, V>);
 
 public:
-  node_ptr<K, V> root;
+  NodePtr <K, V> root_;
 
-  BinaryTree() : root(nullptr) {};
+  BinaryTree() : root_(nullptr) {};
 
-  void put(K, V);
+  void Put(K, V);
 
-  V *get(K);
+  V *Get(K);
 
-  void inorder_print(node_ptr<K, V>);
+  void InorderPrint(NodePtr <K, V>);
 };
 
 template<class K, class V>
-void BinaryTree<K, V>::put(K key, V value) {
-  root = put(root, key, value);
+void BinaryTree<K, V>::Put(K key, V value) {
+  root_ = Put(root_, key, value);
 }
 
 /**
@@ -76,18 +77,18 @@ void BinaryTree<K, V>::put(K key, V value) {
 * @return pointer to the new node or subtree with added node
 */
 template<class K, class V>
-node_ptr<K, V> BinaryTree<K, V>::put(node_ptr<K, V> node, K key, V value) {
+NodePtr <K, V> BinaryTree<K, V>::Put(NodePtr <K, V> node, K key, V value) {
   if (node == nullptr) {
     return std::make_shared<Node<K, V>>(key, value);
   }
-  if (node->key > key) {
-    node->left = put(node->left, key, value);
-  } else if (node->key < key) {
-    node->right = put(node->right, key, value);
+  if (node->key_ > key) {
+    node->left_ = Put(node->left_, key, value);
+  } else if (node->key_ < key) {
+    node->right_ = Put(node->right_, key, value);
   } else {
-    node->value = value;
+    node->value_ = value;
   }
-  node->count = 1 + size(node->left) + size(node->right);
+  node->count_ = 1 + Size(node->left_) + Size(node->right_);
   return node;
 }
 
@@ -101,11 +102,11 @@ node_ptr<K, V> BinaryTree<K, V>::put(node_ptr<K, V> node, K key, V value) {
 * @return size of the tree
 */
 template<class K, class V>
-int BinaryTree<K, V>::size(node_ptr<K, V> node) {
+int BinaryTree<K, V>::Size(NodePtr <K, V> node) {
   if (node == nullptr) {
     return 0;
   }
-  return node->count;
+  return node->count_;
 }
 
 
@@ -119,28 +120,28 @@ int BinaryTree<K, V>::size(node_ptr<K, V> node) {
 * @return pointer to the value of given key
 */
 template<class K, class V>
-V *BinaryTree<K, V>::get(K key) {
-  node_ptr<K, V> current = root;
+V *BinaryTree<K, V>::Get(K key) {
+  NodePtr <K, V> current = root_;
   while (current != nullptr) {
-    if (current->key > key) {
-      current = current->left;
-    } else if (current->key < key) {
-      current = current->right;
+    if (current->key_ > key) {
+      current = current->left_;
+    } else if (current->key_ < key) {
+      current = current->right_;
     } else {
-      return &(current->value);
+      return &(current->value_);
     }
   }
   return nullptr;
 }
 
 template<class K, class V>
-void BinaryTree<K, V>::inorder_print(node_ptr<K, V> node) {
+void BinaryTree<K, V>::InorderPrint(NodePtr <K, V> node) {
   if (node == nullptr) {
     return;
   }
-  inorder_print(node->left);
-  std::cout << node->key << " " << node->value << std::endl;
-  inorder_print(node->right);
+  InorderPrint(node->left_);
+  std::cout << node->key_ << " " << node->value_ << std::endl;
+  InorderPrint(node->right_);
 }
 
 } //binary_tree

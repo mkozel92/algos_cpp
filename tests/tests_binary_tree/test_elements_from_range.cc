@@ -9,10 +9,10 @@ TEST(binary_trees, elements_from_range){
   LinkedListQueue<int> lq;
   std::vector<int> a_vector{1, 6, 9, 7, 5, 3, 2, 0, 4, 8};
   for(auto i : a_vector){
-    bt.put(i , 2*i);
+    bt.Put(i , 2*i);
   }
   
-  binary_tree::get_elements_from_range(bt.root, &lq, 3, 7 );
+  binary_tree::GetElementsFromRange(bt.root_, &lq, 3, 7 );
   
   int j = 3;
   for(LLIterator<int> it = lq.begin(); it != lq.end(); it++){

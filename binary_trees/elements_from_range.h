@@ -18,18 +18,18 @@ namespace binary_tree {
 * @param hi upper bound for the range
 */
 template<class K, class V>
-void get_elements_from_range(node_ptr<K, V> a_node, LinkedListQueue<K> *q, K low, K hi) {
+void GetElementsFromRange(NodePtr <K, V> a_node, LinkedListQueue<K> *q, K low, K hi) {
   if (a_node == nullptr) {
     return;
   }
-  if (a_node->key > hi) {
-    get_elements_from_range(a_node->left, q, low, hi);
-  } else if (a_node->key < low) {
-    get_elements_from_range(a_node->right, q, low, hi);
+  if (a_node->key_ > hi) {
+    GetElementsFromRange(a_node->left_, q, low, hi);
+  } else if (a_node->key_ < low) {
+    GetElementsFromRange(a_node->right_, q, low, hi);
   } else {
-    get_elements_from_range(a_node->left, q, low, hi);
-    q->enqueue(a_node->key);
-    get_elements_from_range(a_node->right, q, low, hi);
+    GetElementsFromRange(a_node->left_, q, low, hi);
+    q->enqueue(a_node->key_);
+    GetElementsFromRange(a_node->right_, q, low, hi);
   }
 }
 
