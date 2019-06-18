@@ -26,23 +26,23 @@ void BinaryTrie::BuildTrie(const std::string &text) {
   for (const auto &f : frequencies) {
     NodePtr new_node = std::make_shared<Node>(f.second, true);
     new_node->value_ = f.first;
-    min_heap.insert(new_node);
+    min_heap.Insert(new_node);
   }
 
   NodePtr left;
   NodePtr right;
-  while (min_heap.size() > 2) {
-    left = min_heap.remove();
-    right = min_heap.remove();
+  while (min_heap.Size() > 2) {
+    left = min_heap.Remove();
+    right = min_heap.Remove();
 
     int frequency = left->frequency_ + right->frequency_;
     NodePtr new_node = std::make_shared<Node>(frequency, false);
     new_node->left_ = left;
     new_node->right_ = right;
-    min_heap.insert(new_node);
+    min_heap.Insert(new_node);
   }
-  left = min_heap.remove();
-  right = min_heap.remove();
+  left = min_heap.Remove();
+  right = min_heap.Remove();
   int frequency = left->frequency_ + right->frequency_;
 
   root_ = std::make_shared<Node>(frequency, false);

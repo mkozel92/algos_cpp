@@ -28,7 +28,7 @@ void GetElementsFromRange(NodePtr <K, V> a_node, LinkedListQueue<K> *q, K low, K
     GetElementsFromRange(a_node->right_, q, low, hi);
   } else {
     GetElementsFromRange(a_node->left_, q, low, hi);
-    q->enqueue(a_node->key_);
+    q->Enqueue(a_node->key_);
     GetElementsFromRange(a_node->right_, q, low, hi);
   }
 }

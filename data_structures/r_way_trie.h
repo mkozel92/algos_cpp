@@ -82,7 +82,6 @@ std::shared_ptr<Node<T>> RWayTrie<T>::RecursivePut(std::shared_ptr<Node<T>> a_no
   string_index += 1;
   if (string_index >= key.length()) {
     a_node->value_ = value;
-    return a_node;
   } else {
     a_node->next_[key[string_index]] = RecursivePut(a_node->next_[key[string_index]], key, \
                  value, string_index);

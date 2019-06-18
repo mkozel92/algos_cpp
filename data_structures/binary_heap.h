@@ -15,35 +15,35 @@
 template<class T>
 class BinaryHeap {
 private:
-  bool (*compare)(T, T);
+  bool (*compare_)(T, T);
 
-  int current_size;
-  std::vector<T> data;
+  int current_size_;
+  std::vector<T> data_;
 
-  void sink(int);
+  void Sink(int);
 
-  void swim(int);
+  void Swim(int);
 
 public:
   explicit BinaryHeap(bool (*compare)(T, T), \
-               int capacity = 100) : data(capacity), \
-                                     current_size(0), \
-                                     compare(compare) {};
+               int capacity = 100) : data_(capacity), \
+                                     current_size_(0), \
+                                     compare_(compare) {};
 
-  explicit BinaryHeap(int capacity = 100) : data(capacity), \
-                                     current_size(0), \
-                                     compare([](T a, T b) -> bool { return a > b; })\
+  explicit BinaryHeap(int capacity = 100) : data_(capacity), \
+                                     current_size_(0), \
+                                     compare_([](T a, T b) -> bool { return a > b; })\
  {};
 
-  void insert(T);
+  void Insert(T);
 
-  bool is_empty();
+  bool IsEmpty();
 
-  void print_heap();
+  void PrintHeap();
 
-  int size();
+  int Size();
 
-  T remove();
+  T Remove();
 };
 
 
@@ -54,20 +54,20 @@ public:
 * @param k index of element to sink
 */
 template<class T>
-void BinaryHeap<T>::sink(int k) {
+void BinaryHeap<T>::Sink(int k) {
 
-  while (2 * k <= current_size) {
+  while (2 * k <= current_size_) {
     int _child;
     int left_child = 2 * k;
-    int right_child = std::min(2 * k + 1, current_size);
-    if (compare(data[left_child], data[right_child])) {
+    int right_child = std::min(2 * k + 1, current_size_);
+    if (compare_(data_[left_child], data_[right_child])) {
       _child = left_child;
     } else {
       _child = right_child;
     }
 
-    if (compare(data[_child], data[k])) {
-      swap(&data, _child, k);
+    if (compare_(data_[_child], data_[k])) {
+      swap(&data_, _child, k);
       k = _child;
     } else {
       break;
@@ -83,11 +83,11 @@ void BinaryHeap<T>::sink(int k) {
 * @param k index of the element to swim
 */
 template<class T>
-void BinaryHeap<T>::swim(int k) {
+void BinaryHeap<T>::Swim(int k) {
 
   while (k > 1) {
-    if (compare(data[k], data[k / 2])) {
-      swap(&data, k, k / 2);
+    if (compare_(data_[k], data_[k / 2])) {
+      swap(&data_, k, k / 2);
       k /= 2;
     } else {
       break;
@@ -103,10 +103,10 @@ void BinaryHeap<T>::swim(int k) {
 * @param d data to insert into the heap
 */
 template<class T>
-void BinaryHeap<T>::insert(T d) {
-  current_size += 1;
-  data[current_size] = d;
-  swim(current_size);
+void BinaryHeap<T>::Insert(T data) {
+  current_size_ += 1;
+  data_[current_size_] = data;
+  Swim(current_size_);
 }
 
 /**
@@ -118,11 +118,11 @@ void BinaryHeap<T>::insert(T d) {
 * @return biggest element of the heap
 */
 template<class T>
-T BinaryHeap<T>::remove() {
-  T tmp = data[1];
-  swap(&data, 1, current_size);
-  current_size -= 1;
-  sink(1);
+T BinaryHeap<T>::Remove() {
+  T tmp = data_[1];
+  swap(&data_, 1, current_size_);
+  current_size_ -= 1;
+  Sink(1);
   return tmp;
 }
 
@@ -134,8 +134,8 @@ T BinaryHeap<T>::remove() {
 * @return true if the heap is empty
 */
 template<class T>
-bool BinaryHeap<T>::is_empty() {
-  return current_size == 0;
+bool BinaryHeap<T>::IsEmpty() {
+  return current_size_ == 0;
 }
 
 /**
@@ -144,9 +144,9 @@ bool BinaryHeap<T>::is_empty() {
 * @tparam T data type the heap stores
 */
 template<class T>
-void BinaryHeap<T>::print_heap() {
-  for (int i = 1; i <= current_size; i++) {
-    std::cout << data[i] << " ";
+void BinaryHeap<T>::PrintHeap() {
+  for (int i = 1; i <= current_size_; i++) {
+    std::cout << data_[i] << " ";
   }
   std::cout << std::endl;
 }
@@ -157,8 +157,8 @@ void BinaryHeap<T>::print_heap() {
  * @return size of the heap
  */
 template<class T>
-int BinaryHeap<T>::size() {
-  return current_size;
+int BinaryHeap<T>::Size() {
+  return current_size_;
 }
 
 

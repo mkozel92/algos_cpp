@@ -11,9 +11,8 @@ void BitStream::WriteByte(const char &a_char) {
 
 void BitStream::WriteByte(int a_byte) {
   for (int i = 0; i < 8; i++) {
-    bool bit = a_byte % 2;
+    buffer_.push(a_byte % 2);
     a_byte /= 2;
-    buffer_.push(bit);
   }
 }
 

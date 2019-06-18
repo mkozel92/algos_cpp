@@ -1,6 +1,5 @@
 #include"../graph.h"
 #include<vector>
-#include"../../data_structures/binary_heap.h"
 #include"dijkstra.h"
 #include<utility>
 
@@ -25,7 +24,7 @@ void relax(const WeightedDigraph &a_graph, int v, std::vector<bool> *visited, \
         (*distance)[to] = e->get_weight() + (*distance)[v];
         (*edge_to)[to] = v;
       }
-      bh->insert(std::make_pair((*distance)[to], to));
+      bh->Insert(std::make_pair((*distance)[to], to));
     }
   }
 }
@@ -48,9 +47,9 @@ void dijkstra(const WeightedDigraph &a_graph, std::vector<bool> *visited, \
   BinaryHeap<std::pair<float, int>> bh([](std::pair<float, int> a, \
                                           std::pair<float, int> b) -> bool \
  { return a.first < b.first; });
-  bh.insert(std::make_pair(0.0f, 0));
-  while (!bh.is_empty()) {
-    std::pair<float, int> a_pair = bh.remove();
+  bh.Insert(std::make_pair(0.0f, 0));
+  while (!bh.IsEmpty()) {
+    std::pair<float, int> a_pair = bh.Remove();
     if (!(*visited)[a_pair.second])
       relax(a_graph, a_pair.second, visited, edge_to, distance, &bh);
   }

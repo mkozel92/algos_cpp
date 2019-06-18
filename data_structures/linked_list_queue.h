@@ -8,31 +8,31 @@
 template<class T>
 class LLIterator {
 private:
-  Node<T> *node_ptr;
+  Node<T> *NodePtr;
 
-  explicit LLIterator(Node<T> *node) : node_ptr(node) {};
+  explicit LLIterator(Node<T> *node) : NodePtr(node) {};
 public:
   template<class>
   friend
   class LinkedListQueue;
 
-  LLIterator() : node_ptr(nullptr) {};
+  LLIterator() : NodePtr(nullptr) {};
 
   bool operator!=(const LLIterator &itr) const {
-    return node_ptr != itr.node_ptr;
+    return NodePtr != itr.NodePtr;
   }
 
   T &operator*() const {
-    return node_ptr->data;
+    return NodePtr->data_;
   }
 
   T &operator->() const {
-    return node_ptr->data;
+    return NodePtr->data_;
   }
 
   const LLIterator operator++(int) {
     LLIterator temp = *this;
-    node_ptr = node_ptr->next;
+    NodePtr = NodePtr->next_;
     return temp;
   }
 };
@@ -44,22 +44,22 @@ public:
 template<class T>
 class LinkedListQueue {
 private:
-  Node<T> *first;
-  Node<T> *last;
+  Node<T> *first_;
+  Node<T> *last_;
 
 public:
   LinkedListQueue() {
-    first = nullptr;
-    last = nullptr;
+    first_ = nullptr;
+    last_ = nullptr;
   };
 
-  void enqueue(T);
+  void Enqueue(T);
 
-  T dequeue();
+  T Dequeue();
 
-  bool is_empty();
+  bool IsEmpty();
 
-  void print_queue();
+  void PrintQueue();
 
   LLIterator<T> begin();
 
@@ -70,23 +70,23 @@ public:
 
 template<class T>
 LinkedListQueue<T>::~LinkedListQueue() {
-  Node<T> *current = first;
+  Node<T> *current = first_;
   Node<T> *tmp;
   while (current != nullptr) {
     tmp = current;
-    current = current->next;
+    current = current->next_;
     delete tmp;
   }
 }
 
 template<class T>
 LLIterator<T> LinkedListQueue<T>::begin() {
-  return LLIterator<T>(first);
+  return LLIterator<T>(first_);
 }
 
 template<class T>
 LLIterator<T> LinkedListQueue<T>::end() {
-  return LLIterator<T>(last);
+  return LLIterator<T>(last_);
 }
 
 /**
@@ -97,15 +97,15 @@ LLIterator<T> LinkedListQueue<T>::end() {
 * @param data data to push
 */
 template<class T>
-void LinkedListQueue<T>::enqueue(T data) {
+void LinkedListQueue<T>::Enqueue(T data) {
   auto new_node = new Node<T>(data);
-  new_node->next = nullptr;
-  if (is_empty()) {
-    first = new_node;
-    last = new_node;
+  new_node->next_ = nullptr;
+  if (IsEmpty()) {
+    first_ = new_node;
+    last_ = new_node;
   } else {
-    last->next = new_node;
-    last = new_node;
+    last_->next_ = new_node;
+    last_ = new_node;
   }
 }
 
@@ -118,13 +118,13 @@ void LinkedListQueue<T>::enqueue(T data) {
 * @return value from the beginning of the queue
 */
 template<class T>
-T LinkedListQueue<T>::dequeue() {
-  if (is_empty()) {
+T LinkedListQueue<T>::Dequeue() {
+  if (IsEmpty()) {
     throw std::out_of_range("queue underflow");
   }
-  Node<T> *first_node = first;
-  first = first_node->next;
-  return first_node->data;
+  Node<T> *first_node = first_;
+  first_ = first_node->next_;
+  return first_node->data_;
 }
 
 /**
@@ -135,8 +135,8 @@ T LinkedListQueue<T>::dequeue() {
 * @return returns True if the queue is empty
 */
 template<class T>
-bool LinkedListQueue<T>::is_empty() {
-  return first == nullptr;
+bool LinkedListQueue<T>::IsEmpty() {
+  return first_ == nullptr;
 }
 
 /**
@@ -145,11 +145,11 @@ bool LinkedListQueue<T>::is_empty() {
 * @tparam T data type the queue stores
 */
 template<class T>
-void LinkedListQueue<T>::print_queue() {
-  Node<T> *ptr = first;
+void LinkedListQueue<T>::PrintQueue() {
+  Node<T> *ptr = first_;
   while (ptr != nullptr) {
-    std::cout << ptr->data << std::endl;
-    ptr = ptr->next;
+    std::cout << ptr->data_ << std::endl;
+    ptr = ptr->next_;
   }
 }
 

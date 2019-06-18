@@ -17,23 +17,23 @@ class SeparateChainedHashTable {
 private:
   class Node {
   public:
-    K key;
-    V value;
-    Node *next;
+    K key_;
+    V value_;
+    Node *next_;
 
-    Node(K key, V value) : key(key), value(value), next(nullptr) {};
+    Node(K key, V value) : key_(key), value_(value), next_(nullptr) {};
   };
 
-  std::vector<Node *> data;
-  int size;
+  std::vector<Node *> data_;
+  int size_;
 public:
-  std::hash<K> hasher;
+  std::hash<K> hasher_;
 
-  explicit SeparateChainedHashTable(int size) : data(size), size(size) {};
+  explicit SeparateChainedHashTable(int size) : data_(size), size_(size) {};
 
-  void put(K, V);
+  void Put(K, V);
 
-  V *get(K);
+  V *Get(K);
 };
 
 /**
@@ -46,20 +46,20 @@ public:
 * @param value value to insert
 */
 template<class K, class V>
-void SeparateChainedHashTable<K, V>::put(K key, V value) {
-  int i = std::abs(static_cast<int>(hasher(key))) % size;
-  if (data[i] == nullptr) {
-    data[i] = new Node(key, value);
+void SeparateChainedHashTable<K, V>::Put(K key, V value) {
+  int i = std::abs(static_cast<int>(hasher_(key))) % size_;
+  if (data_[i] == nullptr) {
+    data_[i] = new Node(key, value);
   }
 
-  Node *current = data[i];
-  while (current->next != nullptr and current->key != key) {
-    current = current->next;
+  Node *current = data_[i];
+  while (current->next_ != nullptr and current->key_ != key) {
+    current = current->next_;
   }
-  if (current->key == key) {
-    current->value = value;
+  if (current->key_ == key) {
+    current->value_ = value;
   } else {
-    current->next = new Node(key, value);
+    current->next_ = new Node(key, value);
   }
 }
 
@@ -76,18 +76,19 @@ void SeparateChainedHashTable<K, V>::put(K key, V value) {
 * @return value associated with given key or nullptr
 */
 template<class K, class V>
-V *SeparateChainedHashTable<K, V>::get(K key) {
-  int i = std::abs(static_cast<int>(hasher(key))) % size;
-  Node *current = data[i];
+V *SeparateChainedHashTable<K, V>::Get(K key) {
+  int i = std::abs(static_cast<int>(hasher_(key))) % size_;
+  Node *current = data_[i];
   if (current == nullptr) {
     return nullptr;
   }
-  while (current->next != nullptr and current->key != key) {
-    current = current->next;
+  while (current->next_ != nullptr and current->key_ != key) {
+    current = current->next_;
   }
-  if (current->key == key) {
-    return &current->value;
+  if (current->key_ == key) {
+    return &current->value_;
   }
+  return nullptr;
 }
 
 #endif // ALGOS_DATA_STRUCTURES_SEPARATE_CHAINED_HASH_TABLE_H_

@@ -13,23 +13,23 @@ private:
 
   class Node {
   public:
-    explicit Node(T data) : data(data) {};
-    Node *next;
-    T data;
+    explicit Node(T data) : data_(data) {};
+    Node *next_;
+    T data_;
   };
 
-  Node *first;
+  Node *first_;
 
 public:
-  LinkedListStack() { first = nullptr; };
+  LinkedListStack() : first_(nullptr) {};
 
-  void push(T);
+  void Push(T);
 
-  T pop();
+  T Pop();
 
-  bool is_empty();
+  bool IsEmpty();
 
-  void print_stack();
+  void PrintStack();
 };
 
 /**
@@ -40,10 +40,10 @@ public:
 * @param data data to push
 */
 template<class T>
-void LinkedListStack<T>::push(T data) {
+void LinkedListStack<T>::Push(T data) {
   Node *new_node = new Node(data);
-  new_node->next = first;
-  first = new_node;
+  new_node->next_ = first_;
+  first_ = new_node;
 }
 
 /**
@@ -54,15 +54,15 @@ void LinkedListStack<T>::push(T data) {
 * @return value in the top element of the stack
 */
 template<class T>
-T LinkedListStack<T>::pop() {
-  if (is_empty()) {
+T LinkedListStack<T>::Pop() {
+  if (IsEmpty()) {
     throw std::out_of_range("stack underflow");
   }
-  Node *first_node = first;
-  first = first_node->next;
-  T data_ = first_node->data;
+  Node *first_node = first_;
+  first_ = first_node->next_;
+  T data = first_node->data_;
   delete first_node;
-  return data_;
+  return data;
 }
 
 /**
@@ -73,8 +73,8 @@ T LinkedListStack<T>::pop() {
 * @return returns True if the stack is empty
 */
 template<class T>
-bool LinkedListStack<T>::is_empty() {
-  return first == nullptr;
+bool LinkedListStack<T>::IsEmpty() {
+  return first_ == nullptr;
 }
 
 /**
@@ -83,11 +83,11 @@ bool LinkedListStack<T>::is_empty() {
 * @tparam T data type the stack stores
 */
 template<class T>
-void LinkedListStack<T>::print_stack() {
-  Node *ptr = first;
+void LinkedListStack<T>::PrintStack() {
+  Node *ptr = first_;
   while (ptr != nullptr) {
-    std::cout << ptr->data << std::endl;
-    ptr = ptr->next;
+    std::cout << ptr->data_ << std::endl;
+    ptr = ptr->next_;
   }
 }
 

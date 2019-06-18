@@ -19,7 +19,7 @@ void visit(int, const WeightedGraph &, \
            std::vector<bool> *, BinaryHeap<edge_ptr> *);
 
 /**
-* @brief prim algo to comupute mst
+* @brief prim algo to compute mst
 *
 * @param WeightedGraph graph to process
 *

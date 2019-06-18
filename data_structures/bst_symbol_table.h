@@ -14,15 +14,15 @@ namespace symbol_table {
 template<class K, class V>
 class Node {
 public:
-  K key;
-  V value;
-  Node *left;
-  Node *right;
-  int count;
+  K key_;
+  V value_;
+  Node *left_;
+  Node *right_;
+  int count_;
 
-  Node(K key, V value) : key(key), value(value), count(1) {
-    left = nullptr;
-    right = nullptr;
+  Node(K key, V value) : key_(key), value_(value), count_(1) {
+    left_ = nullptr;
+    right_ = nullptr;
   };
 };
 
@@ -37,33 +37,33 @@ template<class K, class V>
 class BSTSymbolTable {
 
 private:
-  Node<K, V> *put(Node<K, V> *, K, V);
+  Node<K, V> *Put(Node<K, V> *, K, V);
 
-  Node<K, V> *_min(Node<K, V> *);
+  Node<K, V> *Min(Node<K, V> *);
 
-  Node<K, V> *_delete_min(Node<K, V> *);
+  Node<K, V> *DeleteMin(Node<K, V> *);
 
-  Node<K, V> *_delete_key(Node<K, V> *, K);
+  Node<K, V> *DeleteKey(Node<K, V> *, K);
 
-  int size(Node<K, V> *);
+  int Size(Node<K, V> *);
 
 public:
-  Node<K, V> *root;
+  Node<K, V> *root_;
 
-  BSTSymbolTable() : root(nullptr) {};
+  BSTSymbolTable() : root_(nullptr) {};
 
-  void put(K, V);
+  void Put(K, V);
 
-  V *get(K);
+  V *Get(K);
 
-  void inorder_print(Node<K, V> *);
+  void InorderPrint(Node<K, V> *);
 
-  void delete_key(K);
+  void DeleteKey(K);
 };
 
 template<class K, class V>
-void BSTSymbolTable<K, V>::put(K key, V value) {
-  root = put(root, key, value);
+void BSTSymbolTable<K, V>::Put(K key, V value) {
+  root_ = Put(root_, key, value);
 }
 
 /**
@@ -78,18 +78,18 @@ void BSTSymbolTable<K, V>::put(K key, V value) {
 * @return pointer to the new node or subtree with added node
 */
 template<class K, class V>
-Node<K, V> *BSTSymbolTable<K, V>::put(Node<K, V> *node, K key, V value) {
+Node<K, V> *BSTSymbolTable<K, V>::Put(Node<K, V> *node, K key, V value) {
   if (node == nullptr) {
     return new Node<K, V>(key, value);
   }
-  if (node->key > key) {
-    node->left = put(node->left, key, value);
-  } else if (node->key < key) {
-    node->right = put(node->right, key, value);
+  if (node->key_ > key) {
+    node->left_ = Put(node->left_, key, value);
+  } else if (node->key_ < key) {
+    node->right_ = Put(node->right_, key, value);
   } else {
-    node->value = value;
+    node->value_ = value;
   }
-  node->count = 1 + size(node->left) + size(node->right);
+  node->count_ = 1 + Size(node->left_) + Size(node->right_);
   return node;
 }
 
@@ -103,11 +103,11 @@ Node<K, V> *BSTSymbolTable<K, V>::put(Node<K, V> *node, K key, V value) {
 * @return size of the tree
 */
 template<class K, class V>
-int BSTSymbolTable<K, V>::size(Node<K, V> *node) {
+int BSTSymbolTable<K, V>::Size(Node<K, V> *node) {
   if (node == nullptr) {
     return 0;
   }
-  return node->count;
+  return node->count_;
 }
 
 
@@ -121,15 +121,15 @@ int BSTSymbolTable<K, V>::size(Node<K, V> *node) {
 * @return pointer to the value of given key
 */
 template<class K, class V>
-V *BSTSymbolTable<K, V>::get(K key) {
-  Node<K, V> *current = root;
+V *BSTSymbolTable<K, V>::Get(K key) {
+  Node<K, V> *current = root_;
   while (current != nullptr) {
-    if (current->key > key) {
-      current = current->left;
-    } else if (current->key < key) {
-      current = current->right;
+    if (current->key_ > key) {
+      current = current->left_;
+    } else if (current->key_ < key) {
+      current = current->right_;
     } else {
-      return &(current->value);
+      return &(current->value_);
     }
   }
   return nullptr;
@@ -143,8 +143,8 @@ V *BSTSymbolTable<K, V>::get(K key) {
 * @param key key to delete
 */
 template<class K, class V>
-void BSTSymbolTable<K, V>::delete_key(K key) {
-  root = _delete_key(root, key);
+void BSTSymbolTable<K, V>::DeleteKey(K key) {
+  root_ = DeleteKey(root_, key);
 }
 
 /**
@@ -158,28 +158,28 @@ void BSTSymbolTable<K, V>::delete_key(K key) {
 * @return pointer to the new subree with deleted node
 */
 template<class K, class V>
-Node<K, V> *BSTSymbolTable<K, V>::_delete_key(Node<K, V> *node, K key) {
+Node<K, V> *BSTSymbolTable<K, V>::DeleteKey(Node<K, V> *node, K key) {
 
   if (node == nullptr) {
     return nullptr;
   }
   if (node->key < key) {
-    node->right = _delete_key(node->right, key);
-  } else if (node->key > key) {
-    node->left = _delete_key(node->left, key);
+    node->right_ = DeleteKey(node->right_, key);
+  } else if (node->key_ > key) {
+    node->left_ = DeleteKey(node->left, key);
   } else {
-    if (node->left == nullptr) {
-      return node->right;
-    } else if (node->right == nullptr) {
-      return node->left;
+    if (node->left_ == nullptr) {
+      return node->right_;
+    } else if (node->right_ == nullptr) {
+      return node->left_;
     }
 
     Node<K, V> *t = node;
-    node = _min(t->right);
-    node->right = _delete_min(t->right);
-    node->left = t->left;
+    node = Min(t->right_);
+    node->right_ = DeleteMin(t->right_);
+    node->left_ = t->left_;
   }
-  node->count = 1 + size(node->left) + size(node->right);
+  node->count_ = 1 + Size(node->left_) + Size(node->right_);
   return node;
 }
 
@@ -194,15 +194,15 @@ Node<K, V> *BSTSymbolTable<K, V>::_delete_key(Node<K, V> *node, K key) {
 * @return pointer to the new subtree with deleted node
 */
 template<class K, class V>
-Node<K, V> *BSTSymbolTable<K, V>::_delete_min(Node<K, V> *node) {
+Node<K, V> *BSTSymbolTable<K, V>::DeleteMin(Node<K, V> *node) {
   if (node == nullptr) {
     return nullptr;
   }
-  if (node->left == nullptr) {
-    return node->right;
+  if (node->left_ == nullptr) {
+    return node->right_;
   }
-  node->left = _delete_min(node->left);
-  node->count = 1 + size(node->left) + size(node->right);
+  node->left_ = DeleteMin(node->left_);
+  node->count_ = 1 + Size(node->left_) + Size(node->right_);
   return node;
 }
 
@@ -217,13 +217,13 @@ Node<K, V> *BSTSymbolTable<K, V>::_delete_min(Node<K, V> *node) {
 * @return pointer to the node with minimal key
 */
 template<class K, class V>
-Node<K, V> *BSTSymbolTable<K, V>::_min(Node<K, V> *node) {
+Node<K, V> *BSTSymbolTable<K, V>::Min(Node<K, V> *node) {
   if (node == nullptr) {
     return nullptr;
   }
   Node<K, V> *current = node;
-  while (current->left != nullptr) {
-    current = current->left;
+  while (current->left_ != nullptr) {
+    current = current->left_;
   }
   return current;
 }
@@ -237,13 +237,13 @@ Node<K, V> *BSTSymbolTable<K, V>::_min(Node<K, V> *node) {
 * @param node root of the tree to print
 */
 template<class K, class V>
-void BSTSymbolTable<K, V>::inorder_print(Node<K, V> *node) {
+void BSTSymbolTable<K, V>::InorderPrint(Node<K, V> *node) {
   if (node == nullptr) {
     return;
   }
-  inorder_print(node->left);
-  std::cout << node->key << " " << node->value << std::endl;
-  inorder_print(node->right);
+  InorderPrint(node->left_);
+  std::cout << node->key_ << " " << node->value_ << std::endl;
+  InorderPrint(node->right);
 }
 
 } //symbol_table namespace

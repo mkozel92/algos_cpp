@@ -13,12 +13,13 @@
 template<class K>
 class Node {
 public:
-  Node *left;
-  Node *right;
-  bool red;
-  K key;
+  Node *left_;
+  Node *right_;
+  bool red_;
+  K key_;
 
-  explicit Node(K key) : key(key), red(true), left(nullptr), right(nullptr) {};
+  explicit Node(K key) : key_(key), red_(true), \
+  left_(nullptr), right_(nullptr) {};
 };
 
 
@@ -31,26 +32,26 @@ public:
 template<class K>
 class RedBlackTree {
 private:
-  Node<K> *root;
+  Node<K> *root_;
 
-  void flip_colours(Node<K> *);
+  void FlipColours(Node<K> *);
 
-  Node<K> *rotate_left(Node<K> *);
+  Node<K> *RotateLeft(Node<K> *);
 
-  Node<K> *rotate_right(Node<K> *);
+  Node<K> *RotateRight(Node<K> *);
 
-  Node<K> *recursive_put(Node<K> *, K);
+  Node<K> *RecursivePut(Node<K> *, K);
 
-  bool is_red(Node<K> *);
+  bool IsRed(Node<K> *);
 
-  void recursive_print(Node<K> *);
+  void RecursivePrint(Node<K> *);
 
 public:
-  RedBlackTree() : root(nullptr) {};
+  RedBlackTree() : root_(nullptr) {};
 
-  void print_tree();
+  void PrintTree();
 
-  void put(K);
+  void Put(K);
 };
 
 
@@ -63,11 +64,11 @@ public:
 * @return True if link leading to the node is red
 */
 template<class K>
-bool RedBlackTree<K>::is_red(Node<K> *node) {
+bool RedBlackTree<K>::IsRed(Node<K> *node) {
   if (node == nullptr) {
     return false;
   }
-  return node->red;
+  return node->red_;
 }
 
 /**
@@ -79,13 +80,13 @@ bool RedBlackTree<K>::is_red(Node<K> *node) {
 * @return pointer to new three with rotated node
 */
 template<class K>
-Node<K> *RedBlackTree<K>::rotate_left(Node<K> *node) {
+Node<K> *RedBlackTree<K>::RotateLeft(Node<K> *node) {
   Node<K> *new_node;
-  new_node = node->right;
-  node->right = new_node->left;
-  new_node->left = node;
-  new_node->red = node->red;
-  node->red = true;
+  new_node = node->right_;
+  node->right_ = new_node->left_;
+  new_node->left_ = node;
+  new_node->red_ = node->red_;
+  node->red_ = true;
   return new_node;
 }
 
@@ -98,13 +99,13 @@ Node<K> *RedBlackTree<K>::rotate_left(Node<K> *node) {
 * @return pointer to new three with rotated node
 */
 template<class K>
-Node<K> *RedBlackTree<K>::rotate_right(Node<K> *node) {
+Node<K> *RedBlackTree<K>::RotateRight(Node<K> *node) {
   Node<K> *new_node;
-  new_node = node->left;
-  node->left = new_node->right;
-  new_node->right = node;
-  new_node->red = node->red;
-  node->red = true;
+  new_node = node->left_;
+  node->left_ = new_node->right_;
+  new_node->right_ = node;
+  new_node->red_ = node->red_;
+  node->red_ = true;
   return new_node;
 }
 
@@ -115,15 +116,15 @@ Node<K> *RedBlackTree<K>::rotate_right(Node<K> *node) {
 * @param node node for which to swich colours
 */
 template<class K>
-void RedBlackTree<K>::flip_colours(Node<K> *node) {
-  node->right->red = false;
-  node->left->red = false;
-  node->red = true;
+void RedBlackTree<K>::FlipColours(Node<K> *node) {
+  node->right_->red_ = false;
+  node->left_->red_ = false;
+  node->red_ = true;
 }
 
 template<class K>
-void RedBlackTree<K>::put(K key) {
-  root = recursive_put(root, key);
+void RedBlackTree<K>::Put(K key) {
+  root_ = recursive_put(root_, key);
 }
 
 /**
@@ -137,26 +138,26 @@ void RedBlackTree<K>::put(K key) {
 * @return pointer to the new tree with inserted node
 */
 template<class K>
-Node<K> *RedBlackTree<K>::recursive_put(Node<K> *node, K key) {
+Node<K> *RedBlackTree<K>::RecursivePut(Node<K> *node, K key) {
   if (node == nullptr) {
     return new Node<K>(key);
   }
-  if (key < node->key) {
-    node->left = recursive_put(node->left, key);
-  } else if (key > node->key) {
-    node->right = recursive_put(node->right, key);
+  if (key < node->key_) {
+    node->left_ = RecursivePut(node->left_, key);
+  } else if (key > node->key_) {
+    node->right_ = RecursivePut(node->right_, key);
   } else {
-    node->key = key;
+    node->key_ = key;
   }
 
-  if (!is_red(node->left) && is_red(node->right)) {
-    node = rotate_left(node);
+  if (!IsRed(node->left_) && IsRed(node->right_)) {
+    node = RotateLeft(node);
   }
-  if (is_red(node->left) && is_red(node->left->left)) {
-    node = rotate_right(node);
+  if (IsRed(node->left_) && IsRed(node->left_->left_)) {
+    node = RotateRight(node);
   }
-  if (is_red(node->left) && is_red(node->right)) {
-    flip_colours(node);
+  if (IsRed(node->left_) && IsRed(node->right_)) {
+    FlipColours(node);
   }
   return node;
 }
@@ -168,8 +169,8 @@ Node<K> *RedBlackTree<K>::recursive_put(Node<K> *node, K key) {
 * @tparam K type of key
 */
 template<class K>
-void RedBlackTree<K>::print_tree() {
-  recursive_print(root);
+void RedBlackTree<K>::PrintTree() {
+  RecursivePrint(root_);
 }
 
 /**
@@ -179,13 +180,13 @@ void RedBlackTree<K>::print_tree() {
 * @param node root of the tree to print
 */
 template<class K>
-void RedBlackTree<K>::recursive_print(Node<K> *node) {
+void RedBlackTree<K>::RecursivePrint(Node<K> *node) {
   if (node == nullptr) {
     return;
   }
-  std::cout << node->key << std::endl;
-  recursive_print(node->left);
-  recursive_print(node->right);
+  std::cout << node->key_ << std::endl;
+  RecursivePrint(node->left_);
+  RecursivePrint(node->right_);
 }
 
 

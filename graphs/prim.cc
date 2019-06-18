@@ -2,8 +2,6 @@
 #include<memory>
 #include"edge.h"
 #include"graph.h"
-#include"../data_structures/binary_heap.h"
-#include<iostream>
 #include"prim.h"
 
 
@@ -22,7 +20,7 @@ void visit(int v, const WeightedGraph &a_graph, \
     int v_1 = e->either();
     int v_2 = e->other(v_1);
     if (!(*visited)[v_1] || !(*visited)[v_2]) {
-      bh->insert(e);
+      bh->Insert(e);
     }
   }
 }
@@ -48,8 +46,8 @@ std::unordered_set<edge_ptr> prim(const WeightedGraph &a_graph) {
 
   visit(0, a_graph, &visited, &bh);
 
-  while (!bh.is_empty()) {
-    edge_ptr e = bh.remove();
+  while (!bh.IsEmpty()) {
+    edge_ptr e = bh.Remove();
     int v_1 = e->either();
     int v_2 = e->other(v_1);
     if (!visited[v_1] || !visited[v_2]) {
