@@ -97,10 +97,10 @@ void Dfs(const ALWDigraph &a_graph, \
 bool SimulateNFA(const ALWDigraph &nfa, const std::string &regex, \
                  const std::string &a_string) {
   std::unordered_set<int> reachable_states;
+  std::unordered_set<int> match;
   Dfs(nfa, &reachable_states, 0);
 
   for (int i = 0; i < a_string.length(); i++) {
-    std::unordered_set<int> match;
     for (auto state : reachable_states) {
       if (regex[state] == a_string[i] || regex[state] == '.')
         match.insert(state + 1);
@@ -109,6 +109,7 @@ bool SimulateNFA(const ALWDigraph &nfa, const std::string &regex, \
     reachable_states.clear();
     for (auto state: match)
       Dfs(nfa, &reachable_states, state);
+    match.clear();
   }
 
   for (auto state: reachable_states) {

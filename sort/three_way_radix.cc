@@ -18,11 +18,11 @@ void RecursiveRadixQuickSort(std::vector<std::string> *a_vector, \
 
   while (i <= gt) {
     if (GetCharAt((*a_vector)[i], string_index) < v) {
-      swap(a_vector, i, lt);
+      Swap(a_vector, i, lt);
       i++;
       lt++;
     } else if (GetCharAt((*a_vector)[i], string_index) > v) {
-      swap(a_vector, i, gt);
+      Swap(a_vector, i, gt);
       gt--;
     } else {
       i++;

@@ -15,7 +15,7 @@
 * @param n don't sink beyon this index
 */
 template<class T>
-void sink(std::vector<T> *a_vector, int k, int n) {
+void Sink(std::vector<T> *a_vector, int k, int n) {
 
   while (2 * (k + 1) <= n + 1) {
     int bigger_child;
@@ -27,7 +27,7 @@ void sink(std::vector<T> *a_vector, int k, int n) {
       bigger_child = left_child;
     }
     if ((*a_vector)[k] < (*a_vector)[bigger_child]) {
-      swap(a_vector, k, bigger_child);
+      Swap(a_vector, k, bigger_child);
       k = bigger_child;
     } else {
       break;
@@ -46,14 +46,14 @@ void sink(std::vector<T> *a_vector, int k, int n) {
 * @param a_vector a vector to sort
 */
 template<class T>
-void heap_sort(std::vector<T> *a_vector) {
+void HeapSort(std::vector<T> *a_vector) {
   int vector_size = a_vector->size();
   for (int i = vector_size / 2; i >= 0; i--) {
-    sink(a_vector, i, vector_size - 1);
+    Sink(a_vector, i, vector_size - 1);
   }
   for (int j = 0; j < vector_size; j++) {
-    swap(a_vector, 0, vector_size - 1 - j);
-    sink(a_vector, 0, vector_size - 2 - j);
+    Swap(a_vector, 0, vector_size - 1 - j);
+    Sink(a_vector, 0, vector_size - 2 - j);
   }
 }
 

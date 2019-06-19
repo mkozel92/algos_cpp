@@ -28,7 +28,7 @@ void BuildDFA(std::string pattern, std::vector<std::vector<int>> *dfa) {
 
 /**
 * @brief KMP algo to search for substring 
-* comlexity O(N) for substring search and O(MR) to build dfa
+* complexity O(N) for substring search and O(MR) to build dfa
 *
 * @param a_string a string to search in
 * @param pattern pattern to search for

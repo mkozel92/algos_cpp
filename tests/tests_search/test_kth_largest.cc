@@ -8,7 +8,7 @@ TEST(test_kth_largest, test_all){
     v[i] = i;
   }
   for(int k = 0; k < 100; k++){
-    EXPECT_EQ(k, quick_find(&v, k));  
+    EXPECT_EQ(k, QuickFind(&v, k));
   }
 }
 
@@ -18,6 +18,6 @@ TEST(test_kth_largest_three, test_all){
     v[i] = i;
   }
   for(int k = 0; k < 100; k++){
-    EXPECT_EQ(k, quick_find_three(&v, k));  
+    EXPECT_EQ(k, QuickFindThree(&v, k));
   }
 }

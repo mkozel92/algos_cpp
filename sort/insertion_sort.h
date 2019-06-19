@@ -15,11 +15,11 @@
 * this is used for shell sort
 */
 template<class T>
-void insertion_sort(std::vector<T> *a_vector, int h_distance) {
+void InsertionSort(std::vector<T> *a_vector, int h_distance) {
   for (int i = 0; i < a_vector->size(); i++) {
     int j = i;
-    while (j >= h_distance && less((*a_vector)[j], (*a_vector)[j - h_distance])) {
-      swap(a_vector, j, j - h_distance);
+    while (j >= h_distance && Less((*a_vector)[j], (*a_vector)[j - h_distance])) {
+      Swap(a_vector, j, j - h_distance);
       j -= h_distance;
     }
   }

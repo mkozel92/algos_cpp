@@ -15,9 +15,9 @@
 * @param h_vector vector of h distances for insertion sort
 */
 template<class T>
-void shell_sort(std::vector<T> *a_vector, const std::vector<int> &h_vector) {
+void ShellSort(std::vector<T> *a_vector, const std::vector<int> &h_vector) {
   for (int h: h_vector) {
-    insertion_sort(a_vector, h);
+    InsertionSort(a_vector, h);
   }
 }
 

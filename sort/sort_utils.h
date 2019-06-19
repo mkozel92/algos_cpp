@@ -14,21 +14,21 @@
 * @return True if the first element is strictly smaller
 */
 template<class T>
-bool less(T p, T q) {
+bool Less(T p, T q) {
   return p < q;
 }
 
 
 /**
-* @brief implace swap on a given vector
+* @brief implace Swap on a given vector
 *
 * @tparam T
-* @param a_vector vector on which to perform the swap
+* @param a_vector vector on which to perform the Swap
 * @param p first index
 * @param q second index
 */
 template<class T>
-void swap(std::vector<T> *a_vector, int p, int q) {
+void Swap(std::vector<T> *a_vector, int p, int q) {
   T tmp = (*a_vector)[p];
   (*a_vector)[p] = (*a_vector)[q];
   (*a_vector)[q] = tmp;

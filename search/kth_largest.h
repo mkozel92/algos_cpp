@@ -18,16 +18,16 @@
 * @return value of the kth larges elemnt
 */
 template<class T>
-int quick_find(std::vector<T> *a_vector, int k) {
+int QuickFind(std::vector<T> *a_vector, int k) {
 
-  knuth_shuffle(a_vector);
+  KnuthShuffle(a_vector);
 
   int low = 0;
   int hi = a_vector->size() - 1;
 
   while (low <= hi) {
 
-    int j = partition(a_vector, low, hi);
+    int j = Partition(a_vector, low, hi);
 
     if (j < k) {
       low = j + 1;
@@ -54,7 +54,7 @@ int quick_find(std::vector<T> *a_vector, int k) {
 * @return pair of lt, gt separators
 */
 template<class T>
-std::pair<int, int> three_way_partition(std::vector<T> *a_vector, \
+std::pair<int, int> ThreeWayPartition(std::vector<T> *a_vector, \
                                        int from_, int to_) {
   int lt = from_;
   int i = from_;
@@ -63,11 +63,11 @@ std::pair<int, int> three_way_partition(std::vector<T> *a_vector, \
 
   while (i <= gt) {
     if ((*a_vector)[i] < v) {
-      swap(a_vector, i, lt);
+      Swap(a_vector, i, lt);
       i++;
       lt++;
     } else if ((*a_vector)[i] > v) {
-      swap(a_vector, i, gt);
+      Swap(a_vector, i, gt);
       gt--;
     } else {
       i++;
@@ -90,15 +90,15 @@ std::pair<int, int> three_way_partition(std::vector<T> *a_vector, \
 * @return value of the kth larges elemnt
 */
 template<class T>
-T quick_find_three(std::vector<T> *a_vector, int k) {
+T QuickFindThree(std::vector<T> *a_vector, int k) {
 
-  knuth_shuffle(a_vector);
+  KnuthShuffle(a_vector);
   int low = 0;
   int high = a_vector->size() - 1;
 
   while (low <= high) {
 
-    std::pair<int, int> p = three_way_partition(a_vector, low, high);
+    std::pair<int, int> p = ThreeWayPartition(a_vector, low, high);
 
     if (k < p.first) {
       high = p.first - 1;

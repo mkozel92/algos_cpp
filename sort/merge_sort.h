@@ -18,7 +18,7 @@
 * @param mid saparates vectors to merge
 */
 template<class T>
-void merge(std::vector<T> *a_vector, std::vector<T> *aux_vector, int low, int hi, int mid) {
+void Merge(std::vector<T> *a_vector, std::vector<T> *aux_vector, int low, int hi, int mid) {
 
   for (int i = low; i <= hi; i++) {
     (*aux_vector)[i] = (*a_vector)[i];
@@ -52,19 +52,19 @@ void merge(std::vector<T> *a_vector, std::vector<T> *aux_vector, int low, int hi
 * @param hi sort to this index
 */
 template<class T>
-void recursive_sort(std::vector<T> *a_vector, std::vector<T> *aux_vector, int low, int hi) {
+void RecursiveSort(std::vector<T> *a_vector, std::vector<T> *aux_vector, int low, int hi) {
 
   if (hi <= low) {
     return;
   }
 
   int mid = (low + hi) / 2;
-  recursive_sort(a_vector, aux_vector, low, mid);
-  recursive_sort(a_vector, aux_vector, mid + 1, hi);
+  RecursiveSort(a_vector, aux_vector, low, mid);
+  RecursiveSort(a_vector, aux_vector, mid + 1, hi);
   if ((*a_vector)[mid] <= (*a_vector)[mid + 1]) {
     return;
   }
-  merge(a_vector, aux_vector, low, hi, mid);
+  Merge(a_vector, aux_vector, low, hi, mid);
 }
 
 
@@ -78,10 +78,10 @@ void recursive_sort(std::vector<T> *a_vector, std::vector<T> *aux_vector, int lo
 * @param hi sort to this index
 */
 template<class T>
-void iterative_sort(std::vector<T> *a_vector, std::vector<T> *aux_vector, int hi) {
+void IterativeSort(std::vector<T> *a_vector, std::vector<T> *aux_vector, int hi) {
   for (int sz = 1; sz < a_vector->size(); sz = sz + sz) {
     for (int i = 0; i < a_vector->size(); i += sz + sz) {
-      merge(a_vector, aux_vector, i, std::min(hi, i + 2 * sz - 1), i + sz - 1);
+      Merge(a_vector, aux_vector, i, std::min(hi, i + 2 * sz - 1), i + sz - 1);
     }
   }
 }
@@ -95,12 +95,12 @@ void iterative_sort(std::vector<T> *a_vector, std::vector<T> *aux_vector, int hi
 * @param implementation wheter to use iterative or recursive implementation
 */
 template<class T>
-void merge_sort(std::vector<T> *a_vector, const std::string &implementation = "recursive") {
+void MergeSort(std::vector<T> *a_vector, const std::string &implementation = "recursive") {
   std::vector<T> aux_vector(a_vector->size());
   if (implementation == "recursive") {
-    recursive_sort(a_vector, &aux_vector, 0, a_vector->size() - 1);
+    RecursiveSort(a_vector, &aux_vector, 0, a_vector->size() - 1);
   } else if (implementation == "iterative") {
-    iterative_sort(a_vector, &aux_vector, a_vector->size() - 1);
+    IterativeSort(a_vector, &aux_vector, a_vector->size() - 1);
   } else {
     throw std::runtime_error("unknown implementation of merge sort");
   }

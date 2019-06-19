@@ -67,7 +67,7 @@ void BinaryHeap<T>::Sink(int k) {
     }
 
     if (compare_(data_[_child], data_[k])) {
-      swap(&data_, _child, k);
+      Swap(&data_, _child, k);
       k = _child;
     } else {
       break;
@@ -87,7 +87,7 @@ void BinaryHeap<T>::Swim(int k) {
 
   while (k > 1) {
     if (compare_(data_[k], data_[k / 2])) {
-      swap(&data_, k, k / 2);
+      Swap(&data_, k, k / 2);
       k /= 2;
     } else {
       break;
@@ -120,7 +120,7 @@ void BinaryHeap<T>::Insert(T data) {
 template<class T>
 T BinaryHeap<T>::Remove() {
   T tmp = data_[1];
-  swap(&data_, 1, current_size_);
+  Swap(&data_, 1, current_size_);
   current_size_ -= 1;
   Sink(1);
   return tmp;
