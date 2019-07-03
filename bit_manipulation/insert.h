@@ -27,7 +27,7 @@ int insert(int a, int b, int from, int to) {
   mask |= (2 ^ from - 1);
   a &= mask;
   b <<= from;
-  return a | (b);
+  return a | b;
 }
 
 #endif //ALGOS_BIT_MANIPULATION_INSERT_H_
