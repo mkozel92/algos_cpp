@@ -12,19 +12,19 @@ Implementation of commong data structures and algorithms in C++
 
 #### Binary tree algos
 
-1. _binary_tree_
+1. _binary_tree_  
   simple implementation of binary tree. \
 O(log N) insertion and O(log N search)
 
-1. _bst_sequences_
+1. _bst_sequences_  
   Return all possible sequences that could have been used to construct given binary tree
   Complexity O(N!)
 
-1. _connect_same_level_
+1. _connect_same_level_  
   Algo to connect tree nodes that are on the same level in the tree. \
 Uses DFS and has O(N) complexity
 
-1. _elements_from_range_
+1. _elements_from_range_  
 enqueues elements that fall in specified range with O(M + log N) complexity
 
 #### data structures
