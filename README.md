@@ -9,6 +9,7 @@ Implementation of commong data structures and algorithms in C++
   * _common_ancestor_
   * _connect_same_level_
   * _elements_from_range_
+  * _is_bst_
 * [Data structures](#data-structures)
 
 #### Binary tree algos
@@ -31,6 +32,10 @@ Uses DFS and has O(N) complexity
 
 1. _elements_from_range_  
 enqueues elements that fall in specified range with O(M + log N) complexity
+
+1. _is_bst_
+  checks if given tree is BST \
+  complexity O(N)
 
 #### data structures
 
