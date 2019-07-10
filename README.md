@@ -15,6 +15,9 @@ Implementation of commong data structures and algorithms in C++
   * _float_to_bin_
   * _insert_
   * _longest_sequence_
+* [Compression](#compression)
+  * _run_lenght_compression_
+  * _huffman_compression_
 * [Data structures](#data-structures)
 
 #### Binary tree algos
@@ -57,6 +60,13 @@ enqueues elements that fall in specified range with O(M + log N) complexity
   return length of longest sequence of 1s in bit representation of and integer \
   that can be created by flipping exactly one bit in this integer
 
+#### compression
+
+1. _run_length_compression_  
+  compress data by encoding alternating sequences of same bits as a lengths of those sequences
+
+1. _huffman_compression_  
+  compression based on Huffman encoding
 
 #### data structures
 
