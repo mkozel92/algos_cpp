@@ -44,16 +44,16 @@ enqueues elements that fall in specified range with O(M + log N) complexity
 
 #### bit manipulation
 
-1. _conversion_
+1. _conversion_  
   compute number of bits that needs to be flipped to convert integer 'a' into given integer 'b'
 
-1. _float_to_bin_
+1. _float_to_bin_  
   Get binary encoding of a decimal part of float number
 
-1. _insert_
+1. _insert_  
   insert binary representation of given integer between given bits of different integer
 
-1. _longest_sequence_
+1. _longest_sequence_  
   return length of longest sequence of 1s in bit representation of and integer \
   that can be created by flipping exactly one bit in this integer
 
