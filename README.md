@@ -80,46 +80,46 @@ enqueues elements that fall in specified range with O(M + log N) complexity
 
 #### data structures
 
-1. _binary_heap_
+1. _binary_heap_  
   implementation of binary heap using an array of fixed size. \
   O(log N) insertion, deletion and search
 
-1. _bit_stream_
+1. _bit_stream_  
   implementation of simple bit stream for bit manipulation algos
 
-1. _bst_symbol_table_
+1. _bst_symbol_table_  
   symbol table (holds key, value pairs) implemented using binary tree. \
   O(N) deletion, search and insertion as balance is not ensured. \
   O(log N) deletion, search and insertion if the tree is balanced \
   but Hibbard deletion is not symmetric and messes up the balance
 
-1. _dynamic_array_stack_
+1. _dynamic_array_stack_  
   stack implemented using resizing array.
   O(N) operations but amortized time is constant
 
-1. _chained_hash_table_
+1. _chained_hash_table_  
   hash table implementation using separate chaining. \
   O(N/M) insertion, deletion and search. \
   N/M is num_of_elements/size_of_array = average list length
 
-1. _linked_list_queue_
+1. _linked_list_queue_  
   simple implementation of a queue using a linked list. \
   O(1) enqueue, dequeue and peek
 
-1. _linked_list_stack_
+1. _linked_list_stack_  
   simple implementation of a stack using a linked list. \
   O(1) push, pop, peek
 
-1. _red_black_tree_
+1. _red_black_tree_  
   red black binary tree. Inserting of new elements keeps the tree balanced. \
   O (log N) search, insert
 
-1. _r_way_trie_
+1. _r_way_trie_  
   implementation of r way trie \
   with get and insert operation running in O(k) \
   where k is length of a key
 
-1. _ternary_search_trie_
+1. _ternary_search_trie_  
   trie structure with same performance guarantees as r_way_trie \
   but more memory efficient as it does not store tons of null pointers
 
