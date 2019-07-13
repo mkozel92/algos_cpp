@@ -39,7 +39,12 @@ Implementation of commong data structures and algorithms in C++
   * _longest_common_subsequence_  
   * _max_independent_set_  
   * _triple_step_
-  
+* [Graphs](#graphs)
+  * [Shortest path](#shortest_path)
+    * _Bellmann_Ford_
+    * _Dijkstra_
+    * _top_sort_search_
+    
 #### Binary tree algos
 
 1. _binary_tree_  
@@ -177,6 +182,25 @@ connected(p, q) - checks if elements are connected \
   count ways to go up the stair using 1,2, or 3 steps at time \
   complexity O(MN)...choices of steps * num of steps to climb
 
+#### graphs
+
+##### shortest path
+
+1. _Bellamn_Ford_  
+  Bellman Ford shortest path algo. \
+  relaxes every edge V times. \
+  Works with cyclic graphs with negative edges and can detect negative cycles. \
+  complexity O(EV)
+
+1. _Dijkstra_  
+  Dijkstra shortest path algo. \
+  works for cyclic graphs with no negative edges. \
+  complexity O(E log V)
+  
+1. _top_sort_search_  
+  relaxes verices in topological order. \
+  only works for acyclic graphs that have topological order. \
+  complexity O(E)
 #### recursion
 
 ##### 1, permutations
