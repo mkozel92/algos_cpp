@@ -20,6 +20,7 @@ Implementation of commong data structures and algorithms in C++
   * _huffman_compression_
 * [Data structures](#data-structures)
   * _binary_heap_
+  * _bit_array_
   * _bit_stream_
   * _bst_symbol_table_
   * _dynamic_array_stack_
@@ -87,6 +88,10 @@ enqueues elements that fall in specified range with O(M + log N) complexity
 1. _binary_heap_  
   implementation of binary heap using an array of fixed size. \
   O(log N) insertion, deletion and search
+
+1. _bit_array_  
+  implementation of efficient bit storage. \
+  User can set and get bit values from given indices
 
 1. _bit_stream_  
   implementation of simple bit stream for bit manipulation algos
