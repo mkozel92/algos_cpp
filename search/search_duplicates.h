@@ -1,3 +1,6 @@
+#ifndef ALGOS_SEARCH_SEARCH_DUPLICATES_H_
+#define ALGOS_SEARCH_SEARCH_DUPLICATES_H_
+
 #include <unordered_set>
 #include <array>
 #include "../data_structures/bit_array.h"
@@ -12,7 +15,7 @@
  * @return set of duplicates
  */
 template <int N>
-std::unordered_set<int> search_duplicates(const std::array<int, N> &an_array){
+std::unordered_set<int> SearchDuplicates(const std::array<int, N> &an_array){
   BitArray<32000> a_bit_array;
   std::unordered_set<int> duplicates;
   for (auto element: an_array){
@@ -23,4 +26,4 @@ std::unordered_set<int> search_duplicates(const std::array<int, N> &an_array){
   return duplicates;
 }
 
-
+#endif // ALGOS_SEARCH_SEARCH_DUPLICATES_H_

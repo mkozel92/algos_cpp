@@ -24,7 +24,7 @@ int LongestCommonSubsequence(const std::string &first_string,
 
   for (int column = 1; column <= second_string.length(); column++) {
     for (int row = 1; row <= first_string.length(); row++) {
-      if (first_string[row] == second_string[column])
+      if (first_string[row - 1] == second_string[column - 1])
         dp[row][column] = 1 + dp[row - 1][column - 1];
       else
         dp[row][column] = std::max(dp[row][column - 1], dp[row - 1][column]);

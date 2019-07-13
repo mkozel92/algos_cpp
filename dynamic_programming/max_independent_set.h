@@ -37,8 +37,6 @@ int MaxIndependentSet(const std::array<int, N> &an_array) {
 template<int N>
 int MaxIndependentSetRecursive(const std::array<int, N> &an_array, int index,
                                std::unordered_map<int, int> *mem_dict) {
-  if (index == 0)
-    return an_array[index];
 
   if (index < 0){
     return 0;
