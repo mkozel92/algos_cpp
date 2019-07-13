@@ -1,6 +1,6 @@
 test_file="test_file"
 test_scripts=$(find ../ -type f -name "*.cc")
-
+echo ${GTEST_DIR}
 
 g++ -std=c++11 -isystem \
   ${GTEST_DIR}/include -pthread \
