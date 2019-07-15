@@ -59,6 +59,10 @@ Implementation of commong data structures and algorithms in C++
   * _prim_algorithm_
   * _strong_components_
   * _topological_sort_
+* [Linear programming](#linear-programming)
+  * _simplex_
+  
+  
 #### Binary tree algos
 
 - _binary_tree_  
@@ -288,6 +292,11 @@ connected(p, q) - checks if elements are connected \
 - _topological_sort_  
   topologically sort given acyclic graph. \
   Complexity O(E + V)
+
+#### linear programming
+
+- _simplex_  
+  Simplex algo to solve linear programming problems
 
 #### recursion
 
